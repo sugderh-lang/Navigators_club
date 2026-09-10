@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔒 Штаб элиты — нагибаторы3000</title>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="core-body">
+
+    <!-- ЭКРАН ВХОДА -->
+    <div class="core-lock" id="core-lock">
+        <div class="lock-box">
+            <span class="lock-icon">🔒</span>
+            <h1>Штаб элиты</h1>
+            <p>Доступ только для участников Telegram-чата</p>
+            <input type="password" id="core-password" placeholder="Введите пароль" autocomplete="off">
+            <button id="core-enter">Войти</button>
+            <p class="lock-hint">Подсказка: название клуба в игре (одно слово)</p>
+            <p class="lock-error" id="lock-error"></p>
+        </div>
+    </div>
+
+    <!-- СОДЕРЖИМОЕ ШТАБА (показывается после входа) -->
+    <div class="core-content" id="core-content" style="display:none;">
+        <header class="core-header">
+            <a href="index.html" class="back-link">← На главную</a>
+            <span class="core-title">🔒 Штаб элиты</span>
+            <button class="theme-btn" id="theme-toggle">🌙</button>
+        </header>
+
+        <main class="core-main">
+            <h2 class="section-title">👑 Секретный штаб</h2>
+            <p class="section-sub">Здесь только для своих. Никому не рассказывай.</p>
+
+            <div class="core-grid">
+                <div class="core-card">
+                    <h3>🎯 Стратегии на клубные войны</h3>
+                    <ul>
+                        <li>Играем по 3 карты: Гем-граб, Захват кристаллов, Награда за поимку</li>
+                        <li>Состав: 1 танк, 1 дамагер, 1 саппорт</li>
+                        <li>Всегда играем в команде, не рандомим</li>
+                    </ul>
+                </div>
+                <div class="core-card">
+                    <h3>😂 Внутренние мемы</h3>
+                    <ul>
+                        <li>«Скинь 1667» — Илья</li>
+                        <li>«Excuse me, sir» — Китаец</li>
+                        <li>«shit_seller» — NeOrum</li>
+                        <li>«Был бы выбор между учёбой и воровством...» — Гудвин</li>
+                    </ul>
+                </div>
+                <div class="core-card">
+                    <h3>📋 Планы на месяц</h3>
+                    <ul>
+                        <li>Набрать 2 000 000 кубков клуба</li>
+                        <li>Закрыть мегакопилку на 100%</li>
+                        <li>Провести турнир внутри клуба</li>
+                    </ul>
+                </div>
+                <div class="core-card">
+                    <h3>🔑 Правила штаба</h3>
+                    <ul>
+                        <li>Не сливать скрины наружу</li>
+                        <li>Уважать друг друга</li>
+                        <li>Активно участвовать</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ЛОГИКА ВХОДА И ТЕМЫ -->
+    <script>
+        const PASSWORD = 'нагибаторы3000';
+        const lockScreen = document.getElementById('core-lock');
+        const content = document.getElementById('core-content');
+        const errorEl = document.getElementById('lock-error');
+
+        document.getElementById('core-enter').addEventListener('click', checkPassword);
+        document.getElementById('core-password').addEventListener('keypress', e => {
+            if (e.key === 'Enter') checkPassword();
+        });
+
+        function checkPassword() {
+            const input = document.getElementById('core-password').value.trim().toLowerCase();
+            if (input === PASSWORD.toLowerCase() || input === 'нагибаторы3000') {
+                lockScreen.style.display = 'none';
+                content.style.display = 'block';
+            } else {
+                errorEl.textContent = 'Неверный пароль. Попробуй ещё.';
+            }
+        }
+
+        // Тема
+        const themeBtn = document.getElementById('theme-toggle');
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        themeBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        themeBtn.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+        });
+    </script>
+</body>
+</html>

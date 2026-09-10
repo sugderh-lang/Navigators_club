@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 Киберспорт — нагибаторы3000</title>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Логотип" class="logo-img">
+                <span class="logo-text">нагибаторы3000</span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="index.html">Главная</a>
+                <a href="guides.html">Гайды</a>
+                <a href="team.html" class="active">Киберспорт</a>
+                <a href="core.html">🔒 Штаб</a>
+            </nav>
+            <div class="header-actions">
+                <button class="theme-btn" id="theme-toggle">🌙</button>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank" class="btn-tg">💬 Telegram</a>
+                <button class="burger" id="burger"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero compact">
+        <div class="container hero-content">
+            <h1 class="hero-title">🏆 Киберспорт</h1>
+            <p class="hero-slogan">«Мы — команда, которая играет на результат»</p>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-icon">🥇</span>
+                    <span class="stat-value" data-count="12">0</span>
+                    <span class="stat-label">Побед в турнирах</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">⚔️</span>
+                    <span class="stat-value" data-count="48">0</span>
+                    <span class="stat-label">Матчей сыграно</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">📊</span>
+                    <span class="stat-value" data-count="75">0</span>
+                    <span class="stat-label">% побед</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СОСТАВ -->
+    <section class="section" id="roster">
+        <div class="container">
+            <h2 class="section-title">🎮 Состав команды</h2>
+            <p class="section-sub">Основные игроки и их роли</p>
+            <div class="roster-grid" id="roster-grid"></div>
+        </div>
+    </section>
+
+    <!-- ТУРНИРНАЯ ТАБЛИЦА -->
+    <section class="section" id="tournament">
+        <div class="container">
+            <h2 class="section-title">📊 Турнирная таблица</h2>
+            <p class="section-sub">Текущее положение в лиге</p>
+            <div class="table-wrap">
+                <table class="players-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Команда</th>
+                            <th>И</th>
+                            <th>В</th>
+                            <th>П</th>
+                            <th>Очки</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tournament-tbody"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ДОСТИЖЕНИЯ -->
+    <section class="section" id="achievements">
+        <div class="container">
+            <h2 class="section-title">🏅 Достижения команды</h2>
+            <div class="achievements-grid" id="achievements-grid"></div>
+        </div>
+    </section>
+
+    <!-- РАСПИСАНИЕ МАТЧЕЙ -->
+    <section class="section" id="schedule">
+        <div class="container">
+            <h2 class="section-title">📅 Расписание матчей</h2>
+            <div class="schedule-list" id="schedule-list"></div>
+        </div>
+    </section>
+
+    <!-- СВЯЗЬ С ЛИДЕРОМ -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <h2 class="section-title">📞 Связаться с лидером</h2>
+                <p>Хочешь сыграть против нас или пригласить на турнир?</p>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank" class="btn btn-gold">💬 Написать в Telegram</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Логотип">
+                <span>нагибаторы3000</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">← На главную</a>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank">💬 Telegram</a>
+            </div>
+            <p class="footer-copy">© 2026 нагибаторы3000</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderRoster();
+            renderTournament();
+            renderAchievements();
+            renderSchedule();
+        });
+    </script>
+</body>
+</html>

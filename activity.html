@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📡 LIVE — Активность клуба — нагибаторы3000</title>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+
+    <div class="bg-layer" aria-hidden="true">
+        <div class="bg-gradient"></div>
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Логотип" class="logo-img">
+                <span class="logo-text">нагибаторы3000</span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="index.html">Главная</a>
+                <a href="profiles.html">👤 Профили</a>
+                <a href="ranks.html">🏅 Звания</a>
+                <a href="achievements.html">🏆 Достижения</a>
+                <a href="minigames.html">🎮 Мини-игры</a>
+                <a href="activity.html" class="active">📡 LIVE</a>
+                <a href="shop.html">💰 Магазин</a>
+                <a href="core.html">🔒 Штаб</a>
+            </nav>
+            <div class="header-actions">
+                <button class="theme-btn" id="theme-toggle">🌙</button>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank" class="btn-tg">💬 Telegram</a>
+                <button class="burger" id="burger"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero compact">
+        <div class="container hero-content">
+            <div class="live-badge">
+                <span class="live-dot"></span>
+                LIVE
+            </div>
+            <h1 class="hero-title">📡 Активность клуба</h1>
+            <p class="hero-slogan">Что происходит прямо сейчас</p>
+        </div>
+    </section>
+
+    <!-- СТАТИСТИКА LIVE -->
+    <section class="section">
+        <div class="container">
+            <div class="live-stats reveal-up" id="live-stats"></div>
+        </div>
+    </section>
+
+    <!-- ФИЛЬТРЫ -->
+    <section class="section">
+        <div class="container">
+            <div class="filters reveal-up" id="activity-filters">
+                <button class="filter-btn active" data-cat="all">📋 Все</button>
+                <button class="filter-btn" data-cat="rank">🏆 Рейтинг</button>
+                <button class="filter-btn" data-cat="achievement">⭐ Достижения</button>
+                <button class="filter-btn" data-cat="rankup">👑 Повышения</button>
+                <button class="filter-btn" data-cat="record">🔥 Рекорды</button>
+                <button class="filter-btn" data-cat="event">🎉 События</button>
+                <button class="filter-btn" data-cat="minigame">🎮 Мини-игры</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЛЕНТА -->
+    <section class="section">
+        <div class="container">
+            <div class="activity-timeline" id="activity-timeline"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Логотип">
+                <span>нагибаторы3000</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">← На главную</a>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank">💬 Telegram</a>
+            </div>
+            <p class="footer-copy">© 2026 нагибаторы3000</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="activity.js"></script>
+</body>
+</html>

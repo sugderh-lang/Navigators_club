@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 Достижения — нагибаторы3000</title>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="achievements.css">
+</head>
+<body>
+
+    <div class="bg-layer" aria-hidden="true">
+        <div class="bg-gradient"></div>
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Логотип" class="logo-img">
+                <span class="logo-text">нагибаторы3000</span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="index.html">Главная</a>
+                <a href="profiles.html">👤 Профили</a>
+                <a href="ranks.html">🏅 Звания</a>
+                <a href="achievements.html" class="active">🏆 Достижения</a>
+                <a href="guides.html">📚 Гайды</a>
+                <a href="team.html">🏆 Киберспорт</a>
+                <a href="core.html">🔒 Штаб</a>
+            </nav>
+            <div class="header-actions">
+                <button class="theme-btn" id="theme-toggle">🌙</button>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank" class="btn-tg">💬 Telegram</a>
+                <button class="burger" id="burger"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero compact">
+        <div class="container hero-content">
+            <h1 class="hero-title">🏆 Достижения</h1>
+            <p class="hero-slogan">История побед и рекордов клуба</p>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-icon">🏆</span>
+                    <span class="stat-value" data-count="47">0</span>
+                    <span class="stat-label">Всего</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">✅</span>
+                    <span class="stat-value" id="unlocked-count">0</span>
+                    <span class="stat-label">Открыто</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">⭐</span>
+                    <span class="stat-value" id="legendary-count">0</span>
+                    <span class="stat-label">Легендарных</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+
+            <!-- Прогресс -->
+            <div class="ach-progress-panel reveal-up">
+                <div class="ach-progress-header">
+                    <h3>📊 Общий прогресс</h3>
+                    <span><strong id="progress-percent">0%</strong></span>
+                </div>
+                <div class="ach-progress-track">
+                    <div class="ach-progress-fill" id="ach-progress-fill"></div>
+                </div>
+                <p class="ach-progress-hint">
+                    Разблокировано <strong id="progress-text">0 из 47</strong> достижений
+                </p>
+            </div>
+
+            <!-- Фильтры категорий -->
+            <div class="filters reveal-up">
+                <button class="filter-btn active" data-cat="all">🎯 Все</button>
+                <button class="filter-btn" data-cat="trophies">🏆 Трофеи</button>
+                <button class="filter-btn" data-cat="wins">⚔️ Победы</button>
+                <button class="filter-btn" data-cat="activity">🔥 Активность</button>
+                <button class="filter-btn" data-cat="team">🤝 Командные</button>
+                <button class="filter-btn" data-cat="rating">📊 Рейтинг</button>
+                <button class="filter-btn" data-cat="events">🎉 События</button>
+                <button class="filter-btn" data-cat="minigames">🎮 Мини-игры</button>
+                <button class="filter-btn" data-cat="rare">💎 Редкие</button>
+                <button class="filter-btn" data-cat="secret">🔒 Секретные</button>
+            </div>
+
+            <!-- Фильтры редкости -->
+            <div class="filters reveal-up">
+                <button class="filter-btn small active" data-rar="all">Все</button>
+                <button class="filter-btn small" data-rar="common">Common</button>
+                <button class="filter-btn small" data-rar="rare">Rare</button>
+                <button class="filter-btn small" data-rar="epic">Epic</button>
+                <button class="filter-btn small" data-rar="legendary">Legendary</button>
+            </div>
+
+            <!-- Сетка достижений -->
+            <div class="achievements-page-grid" id="achievements-grid"></div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Логотип">
+                <span>нагибаторы3000</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">← На главную</a>
+                <a href="profiles.html">👤 Профили</a>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank">💬 Telegram</a>
+            </div>
+            <p class="footer-copy">© 2026 нагибаторы3000</p>
+        </div>
+    </footer>
+
+    <!-- МОДАЛКА РАЗБЛОКИРОВКИ -->
+    <div class="ach-modal" id="ach-modal">
+        <div class="ach-modal-content" id="ach-modal-content">
+            <div class="ach-modal-flash"></div>
+            <div class="ach-modal-particles" id="ach-modal-particles"></div>
+            <div class="ach-modal-icon" id="ach-modal-icon">🏆</div>
+            <div class="ach-modal-rarity" id="ach-modal-rarity">LEGENDARY</div>
+            <h2 class="ach-modal-title">Достижение открыто!</h2>
+            <div class="ach-modal-name" id="ach-modal-name">Название</div>
+            <p class="ach-modal-desc" id="ach-modal-desc">Описание</p>
+            <button class="ach-modal-btn" id="ach-modal-close">🎉 Отлично!</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="achievements.js"></script>
+</body>
+</html>

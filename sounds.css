@@ -1,0 +1,140 @@
+/* ==================== КНОПКА ЗВУКА В ШАПКЕ ==================== */
+.sound-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--gold);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.25s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.sound-btn:hover {
+    transform: scale(1.1) rotate(-10deg);
+    box-shadow: var(--glow-gold);
+}
+
+.sound-btn.muted {
+    color: var(--text-dim);
+    opacity: 0.6;
+}
+
+/* Мини-индикатор звуковых волн */
+.sound-btn::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.sound-btn.playing::after {
+    opacity: 1;
+    animation: soundPulse 0.6s ease-out;
+}
+
+@keyframes soundPulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
+
+/* ==================== ИНДИКАТОР ЗВУКА НА СТРАНИЦЕ ==================== */
+.sound-indicator {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--card-solid);
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    z-index: 9000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    box-shadow: 0 0 30px rgba(249, 202, 36, 0.5);
+}
+
+.sound-indicator.show {
+    opacity: 1;
+    transform: scale(1);
+    animation: soundIndicatorIn 1.2s ease-out;
+}
+
+@keyframes soundIndicatorIn {
+    0% { transform: scale(0.5) translateY(20px); opacity: 0; }
+    30% { transform: scale(1.1); opacity: 1; }
+    80% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0; }
+}
+
+/* ==================== КЛИК-РИПЛ ==================== */
+.click-ripple {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    animation: clickRipple 0.5s ease-out forwards;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes clickRipple {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0.8;
+    }
+    100% {
+        width: 60px;
+        height: 60px;
+        opacity: 0;
+    }
+}
+
+/* ==================== АДАПТИВ ==================== */
+@media (max-width: 600px) {
+    .sound-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    .sound-indicator {
+        right: 20px;
+        bottom: 80px;
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+    }
+}
+
+/* ==================== REDUCED MOTION ==================== */
+@media (prefers-reduced-motion: reduce) {
+    .sound-btn::after,
+    .click-ripple,
+    .sound-indicator {
+        animation: none !important;
+    }
+    .click-ripple { display: none; }
+}

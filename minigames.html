@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Мини-игры — нагибаторы3000</title>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="minigames.css">
+</head>
+<body>
+
+    <div class="bg-layer" aria-hidden="true">
+        <div class="bg-gradient"></div>
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Логотип" class="logo-img">
+                <span class="logo-text">нагибаторы3000</span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="index.html">Главная</a>
+                <a href="profiles.html">👤 Профили</a>
+                <a href="ranks.html">🏅 Звания</a>
+                <a href="achievements.html">🏆 Достижения</a>
+                <a href="minigames.html" class="active">🎮 Мини-игры</a>
+                <a href="shop.html">💰 Магазин</a>
+                <a href="core.html">🔒 Штаб</a>
+            </nav>
+            <div class="header-actions">
+                <button class="theme-btn" id="theme-toggle">🌙</button>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank" class="btn-tg">💬 Telegram</a>
+                <button class="burger" id="burger"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero compact">
+        <div class="container hero-content">
+            <h1 class="hero-title">🎮 Игровой центр</h1>
+            <p class="hero-slogan">6 мини-игр · Зарабатывай Тиранские очки</p>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-icon">🎯</span>
+                    <span class="stat-value" id="total-plays">0</span>
+                    <span class="stat-label">Игр сыграно</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">💰</span>
+                    <span class="stat-value" id="total-points">0</span>
+                    <span class="stat-label">Очков earned</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">🏆</span>
+                    <span class="stat-value" id="best-score">0</span>
+                    <span class="stat-label">Лучший результат</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЕЖЕДНЕВНОЕ ЗАДАНИЕ -->
+    <section class="section">
+        <div class="container">
+            <div class="daily-panel reveal-up" id="daily-panel"></div>
+        </div>
+    </section>
+
+    <!-- СЕТКА ИГР -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title reveal-up">🎲 Выбери игру</h2>
+            <p class="section-sub reveal-up">Нажми на карточку, чтобы начать</p>
+            <div class="games-grid reveal-up" id="games-grid"></div>
+        </div>
+    </section>
+
+    <!-- ТАБЛИЦА ЛИДЕРОВ -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title reveal-up">🏆 Таблица лидеров</h2>
+            <p class="section-sub reveal-up">Топ игроков по очкам в мини-играх</p>
+            <div class="leaderboard reveal-up" id="leaderboard"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Логотип">
+                <span>нагибаторы3000</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">← На главную</a>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank">💬 Telegram</a>
+            </div>
+            <p class="footer-copy">© 2026 нагибаторы3000</p>
+        </div>
+    </footer>
+
+    <!-- МОДАЛКА ИГРЫ -->
+    <div class="game-modal" id="game-modal">
+        <div class="game-modal-content">
+            <button class="game-close" id="game-close">✕</button>
+            <div class="game-header">
+                <span class="game-icon" id="game-icon">🎮</span>
+                <h2 class="game-title" id="game-title">Название</h2>
+                <p class="game-subtitle" id="game-subtitle">Описание</p>
+            </div>
+            <div class="game-area" id="game-area"></div>
+            <div class="game-result" id="game-result" style="display:none;"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="minigames.js"></script>
+</body>
+</html>

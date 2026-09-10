@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💰 Тиранские очки — нагибаторы3000</title>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="shop.css">
+</head>
+<body>
+
+    <div class="bg-layer" aria-hidden="true">
+        <div class="bg-gradient"></div>
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Логотип" class="logo-img">
+                <span class="logo-text">нагибаторы3000</span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="index.html">Главная</a>
+                <a href="profiles.html">👤 Профили</a>
+                <a href="ranks.html">🏅 Звания</a>
+                <a href="achievements.html">🏆 Достижения</a>
+                <a href="shop.html" class="active">💰 Магазин</a>
+                <a href="guides.html">📚 Гайды</a>
+                <a href="team.html">🏆 Киберспорт</a>
+                <a href="core.html">🔒 Штаб</a>
+            </nav>
+            <div class="header-actions">
+                <button class="theme-btn" id="theme-toggle">🌙</button>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank" class="btn-tg">💬 Telegram</a>
+                <button class="burger" id="burger"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero compact">
+        <div class="container hero-content">
+            <h1 class="hero-title">💰 Тиранские очки</h1>
+            <p class="hero-slogan">Внутренняя игровая валюта клуба</p>
+            <p style="color:var(--pink); font-size:0.85rem; margin-top:15px; font-weight:700;">
+                ⚠️ Это НЕ реальные деньги. Только внутренняя система клуба.
+            </p>
+        </div>
+    </section>
+
+    <!-- БАЛАНС -->
+    <section class="section">
+        <div class="container">
+            <div class="balance-panel reveal-up" id="balance-panel"></div>
+        </div>
+    </section>
+
+    <!-- КАК ЗАРАБОТАТЬ -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title reveal-up">💡 Как заработать очки</h2>
+            <p class="section-sub reveal-up">Способы получить Тиранские очки</p>
+            <div class="earn-grid reveal-up" id="earn-grid"></div>
+        </div>
+    </section>
+
+    <!-- МАГАЗИН -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title reveal-up">🛒 Магазин наград</h2>
+            <p class="section-sub reveal-up">Купи декоративные награды за Тиранские очки</p>
+
+            <div class="filters reveal-up" id="shop-filters">
+                <button class="filter-btn active" data-cat="all">🎁 Все</button>
+                <button class="filter-btn" data-cat="frames">🖼️ Рамки</button>
+                <button class="filter-btn" data-cat="titles">👑 Титулы</button>
+                <button class="filter-btn" data-cat="badges">🎖️ Значки</button>
+                <button class="filter-btn" data-cat="crowns">👑 Короны</button>
+                <button class="filter-btn" data-cat="effects">✨ Эффекты</button>
+                <button class="filter-btn" data-cat="decor">🎨 Декор</button>
+            </div>
+
+            <div class="shop-grid" id="shop-grid"></div>
+        </div>
+    </section>
+
+    <!-- ИСТОРИЯ ПОКУПОК -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title reveal-up">📜 История покупок</h2>
+            <div class="history-shop-list reveal-up" id="history-shop-list"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Логотип">
+                <span>нагибаторы3000</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">← На главную</a>
+                <a href="profiles.html">👤 Профили</a>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank">💬 Telegram</a>
+            </div>
+            <p class="footer-copy">© 2026 нагибаторы3000</p>
+        </div>
+    </footer>
+
+    <!-- МОДАЛКА ПОКУПКИ -->
+    <div class="buy-modal" id="buy-modal">
+        <div class="buy-modal-content">
+            <button class="buy-modal-close" id="buy-modal-close">✕</button>
+            <div class="buy-modal-icon" id="buy-modal-icon">🖼️</div>
+            <h2 class="buy-modal-title">Подтверждение покупки</h2>
+            <div class="buy-modal-name" id="buy-modal-name">Название</div>
+            <div class="buy-modal-price" id="buy-modal-price">💰 500</div>
+            <p class="buy-modal-desc">Купить эту награду за Тиранские очки?</p>
+            <div class="buy-modal-buttons">
+                <button class="buy-btn-cancel" id="buy-cancel">Отмена</button>
+                <button class="buy-btn-confirm" id="buy-confirm">🛒 Купить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛКА УСПЕХА -->
+    <div class="success-modal" id="success-modal">
+        <div class="success-modal-content">
+            <div class="success-flash"></div>
+            <div class="success-particles" id="success-particles"></div>
+            <div class="success-icon">🎉</div>
+            <h2 class="success-title">Покупка успешна!</h2>
+            <div class="success-name" id="success-name">Название</div>
+            <p class="success-desc">Награда добавлена в твой профиль</p>
+            <button class="success-btn" id="success-close">Отлично!</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="shop.js"></script>
+</body>
+</html>

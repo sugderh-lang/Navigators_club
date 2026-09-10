@@ -1,0 +1,675 @@
+/* ==================== ДНЕВНОЕ ЗАДАНИЕ ==================== */
+.daily-panel {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(249, 202, 36, 0.15), var(--card));
+    border: 2px solid var(--gold);
+    border-radius: 22px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 50px rgba(249, 202, 36, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+.daily-panel::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: conic-gradient(from 0deg, transparent, rgba(249, 202, 36, 0.15), transparent 30%);
+    animation: rotateShine 12s linear infinite;
+    pointer-events: none;
+}
+.daily-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+.daily-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.daily-timer {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1rem;
+    color: var(--pink);
+    padding: 6px 14px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    border: 1px solid rgba(235, 77, 75, 0.3);
+}
+.daily-task {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 14px;
+    margin-bottom: 15px;
+}
+.daily-task-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 10px;
+}
+.daily-task-text {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.daily-task-reward {
+    color: var(--gold);
+    font-weight: 800;
+    font-family: 'Russo One', sans-serif;
+}
+.daily-progress {
+    position: relative;
+    z-index: 2;
+    margin-top: 15px;
+}
+.daily-progress-track {
+    height: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+.daily-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+    border-radius: 6px;
+    transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 15px rgba(249, 202, 36, 0.6);
+}
+.daily-progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    font-weight: 700;
+}
+.daily-progress-label strong { color: var(--gold); }
+.daily-complete {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+    color: var(--green);
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.1rem;
+}
+
+/* ==================== СЕТКА ИГР ==================== */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.game-card {
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    padding: 28px 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.35s;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+.game-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--gold);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(249, 202, 36, 0.3);
+}
+.game-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(249, 202, 36, 0.15), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.game-card:hover::before { opacity: 1; }
+
+.game-card-icon {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 0 20px rgba(249, 202, 36, 0.5));
+    transition: transform 0.3s;
+}
+.game-card:hover .game-card-icon {
+    transform: scale(1.15) rotate(-8deg);
+}
+
+.game-card-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.15rem;
+    color: var(--gold);
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 2;
+}
+.game-card-desc {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+    min-height: 40px;
+}
+
+.game-card-meta {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+    position: relative;
+    z-index: 2;
+}
+.game-card-meta-item {
+    text-align: center;
+}
+.game-card-meta-value {
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.95rem;
+    color: var(--gold);
+    display: block;
+}
+.game-card-meta-label {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+}
+
+.game-card-difficulty {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    z-index: 2;
+}
+.diff-easy { background: var(--green); color: #fff; }
+.diff-medium { background: var(--gold); color: #1a1a2e; }
+.diff-hard { background: var(--pink); color: #fff; }
+.diff-extreme { background: linear-gradient(135deg, #9b59b6, #6c5ce7); color: #fff; }
+
+/* ==================== ТАБЛИЦА ЛИДЕРОВ ==================== */
+.leaderboard {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+}
+.lb-row {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    gap: 15px;
+    align-items: center;
+    padding: 14px 16px;
+    border-radius: 12px;
+    transition: background 0.2s, transform 0.2s;
+    border-bottom: 1px solid rgba(162, 181, 211, 0.08);
+}
+.lb-row:last-child { border-bottom: none; }
+.lb-row:hover {
+    background: rgba(249, 202, 36, 0.08);
+    transform: translateX(6px);
+}
+.lb-row.top-1 {
+    background: linear-gradient(90deg, rgba(249, 202, 36, 0.15), transparent);
+    border-left: 4px solid var(--gold);
+}
+.lb-row.top-2 {
+    background: linear-gradient(90deg, rgba(192, 192, 192, 0.1), transparent);
+    border-left: 4px solid #c0c0c0;
+}
+.lb-row.top-3 {
+    background: linear-gradient(90deg, rgba(205, 127, 50, 0.1), transparent);
+    border-left: 4px solid #cd7f32;
+}
+.lb-rank {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.2rem;
+    text-align: center;
+    color: var(--gold);
+}
+.lb-nick {
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+.lb-points {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.05rem;
+    color: var(--gold);
+    text-align: right;
+}
+
+/* ==================== МОДАЛКА ИГРЫ ==================== */
+.game-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 3000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+.game-modal.active {
+    display: flex;
+    animation: fadeIn 0.3s;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.game-modal-content {
+    background: var(--card-solid);
+    border: 2px solid var(--gold);
+    border-radius: 24px;
+    padding: 30px;
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 0 80px rgba(249, 202, 36, 0.5);
+    animation: gameIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    margin: auto;
+}
+@keyframes gameIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.game-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+    z-index: 10;
+}
+.game-close:hover { color: var(--pink); transform: rotate(90deg); }
+
+.game-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+.game-icon {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 20px rgba(249, 202, 36, 0.6));
+}
+.game-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 6px;
+}
+.game-subtitle {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+
+.game-area {
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-result {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(249, 202, 36, 0.15), var(--card));
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+}
+.game-result-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 10px;
+}
+.game-result-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin-bottom: 8px;
+}
+.game-result-score {
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 5px;
+}
+.game-result-points {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.5rem;
+    color: var(--green);
+    margin-bottom: 15px;
+}
+.game-result-btn {
+    padding: 12px 30px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #1a1a2e;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition: transform 0.2s;
+    margin: 5px;
+}
+.game-result-btn:hover { transform: translateY(-2px) scale(1.05); }
+.game-result-btn.secondary {
+    background: transparent;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+}
+
+.game-start-btn {
+    padding: 16px 45px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #1a1a2e;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 30px rgba(249, 202, 36, 0.5);
+}
+.game-start-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 45px rgba(249, 202, 36, 0.8);
+}
+
+/* === Игра: Угадай бойца === */
+.guess-question {
+    font-size: 1rem;
+    color: var(--text-dim);
+    margin-bottom: 15px;
+}
+.guess-hint {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 20px rgba(249, 202, 36, 0.6));
+}
+.guess-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+    max-width: 400px;
+}
+.guess-option {
+    padding: 14px;
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.guess-option:hover {
+    border-color: var(--gold);
+    background: rgba(249, 202, 36, 0.1);
+    transform: translateY(-2px);
+}
+.guess-option.correct {
+    background: var(--green);
+    border-color: var(--green);
+    color: #fff;
+    animation: correctPulse 0.5s;
+}
+.guess-option.wrong {
+    background: var(--pink);
+    border-color: var(--pink);
+    color: #fff;
+    animation: shake 0.4s;
+}
+@keyframes correctPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+}
+
+/* === Игра: Реакция === */
+.reaction-area {
+    width: 100%;
+    height: 280px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s;
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    user-select: none;
+}
+.reaction-wait { background: linear-gradient(135deg, #c0392b, #e74c3c); }
+.reaction-ready { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+.reaction-result { background: linear-gradient(135deg, #2c3e50, #34495e); }
+
+/* === Игра: Угадай результат === */
+.result-question {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text);
+}
+.result-options {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    max-width: 420px;
+}
+.result-option {
+    flex: 1;
+    padding: 20px 10px;
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    color: var(--text);
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.result-option:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+}
+
+/* === Игра: Колесо === */
+.wheel-container {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    margin: 0 auto 20px;
+}
+.wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+        #f9ca24 0deg 60deg,
+        #eb4d4b 60deg 120deg,
+        #6ab04c 120deg 180deg,
+        #3498db 180deg 240deg,
+        #9b59b6 240deg 300deg,
+        #e67e22 300deg 360deg
+    );
+    border: 6px solid var(--gold);
+    box-shadow: 0 0 40px rgba(249, 202, 36, 0.6);
+    transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+    position: relative;
+}
+.wheel-arrow {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    z-index: 2;
+    filter: drop-shadow(0 0 10px rgba(249, 202, 36, 0.8));
+}
+.wheel-labels {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+.wheel-label {
+    position: absolute;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #1a1a2e;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.5);
+}
+.wheel-result {
+    text-align: center;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    margin-top: 15px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--gold);
+    min-height: 50px;
+}
+
+/* === Игра: Викторина === */
+.quiz-progress {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.quiz-progress-track {
+    height: 8px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    overflow: hidden;
+}
+.quiz-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    transition: width 0.3s;
+    box-shadow: 0 0 10px rgba(249, 202, 36, 0.6);
+}
+.quiz-question {
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+    min-height: 50px;
+}
+.quiz-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    max-width: 480px;
+}
+.quiz-option {
+    padding: 14px;
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    text-align: left;
+}
+.quiz-option:hover {
+    border-color: var(--gold);
+    background: rgba(249, 202, 36, 0.1);
+}
+
+/* === Игра: Ежедневное испытание === */
+.daily-challenge-area {
+    text-align: center;
+    width: 100%;
+}
+.daily-target {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    cursor: pointer;
+    margin: 20px auto;
+    box-shadow: 0 0 40px rgba(249, 202, 36, 0.7);
+    transition: transform 0.1s;
+    user-select: none;
+}
+.daily-target:active { transform: scale(0.95); }
+.daily-score-big {
+    font-family: 'Russo One', sans-serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    text-shadow: 0 0 25px rgba(249, 202, 36, 0.6);
+}
+.daily-timer-big {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.3rem;
+    color: var(--pink);
+    margin-top: 8px;
+}
+
+/* ==================== АДАПТИВ ==================== */
+@media (max-width: 600px) {
+    .games-grid { grid-template-columns: 1fr; }
+    .game-modal-content { padding: 20px 16px; }
+    .guess-options, .quiz-options { grid-template-columns: 1fr; }
+    .result-options { flex-direction: column; }
+    .daily-header { flex-direction: column; gap: 10px; text-align: center; }
+}

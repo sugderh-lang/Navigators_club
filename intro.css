@@ -1,0 +1,404 @@
+/* ==================== INTRO OVERLAY ==================== */
+.intro-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.intro-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Фон с радиальным градиентом */
+.intro-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 50% 50%, rgba(108, 92, 231, 0.15), transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(249, 202, 36, 0.08), transparent 40%);
+    opacity: 0;
+    animation: introBgIn 1.5s ease-out 0.5s forwards;
+}
+
+@keyframes introBgIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Тонкие лучи */
+.intro-rays {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vmax;
+    height: 100vmax;
+    transform: translate(-50%, -50%);
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        rgba(249, 202, 36, 0.15) 5deg,
+        transparent 10deg,
+        transparent 30deg,
+        rgba(249, 202, 36, 0.1) 35deg,
+        transparent 40deg,
+        transparent 90deg,
+        rgba(249, 202, 36, 0.12) 95deg,
+        transparent 100deg,
+        transparent 150deg,
+        rgba(249, 202, 36, 0.1) 155deg,
+        transparent 160deg,
+        transparent 210deg,
+        rgba(249, 202, 36, 0.12) 215deg,
+        transparent 220deg,
+        transparent 280deg,
+        rgba(249, 202, 36, 0.15) 285deg,
+        transparent 290deg,
+        transparent 360deg
+    );
+    opacity: 0;
+    animation: raysIn 2s ease-out 0.8s forwards, raysRotate 20s linear 2s infinite;
+    pointer-events: none;
+    filter: blur(2px);
+}
+
+@keyframes raysIn {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes raysRotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Контент по центру */
+.intro-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Логотип */
+.intro-logo-wrap {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro-logo-glow {
+    position: absolute;
+    inset: -30%;
+    background: radial-gradient(circle, rgba(249, 202, 36, 0.6), transparent 60%);
+    filter: blur(40px);
+    opacity: 0;
+    animation: logoGlow 2s ease-out 1s forwards;
+}
+
+@keyframes logoGlow {
+    0% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1.1); }
+    100% { opacity: 0.7; transform: scale(1); }
+}
+
+.intro-logo {
+    position: relative;
+    z-index: 2;
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    opacity: 0;
+    transform: scale(0.3) rotate(-15deg);
+    filter: drop-shadow(0 0 30px rgba(249, 202, 36, 0)) brightness(0);
+    animation: logoIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s forwards,
+               logoShine 0.6s ease-out 1.2s forwards,
+               logoFloat 4s ease-in-out 2s infinite;
+}
+
+@keyframes logoIn {
+    from {
+        opacity: 0;
+        transform: scale(0.3) rotate(-15deg);
+        filter: drop-shadow(0 0 30px rgba(249, 202, 36, 0)) brightness(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        filter: drop-shadow(0 0 30px rgba(249, 202, 36, 0.5)) brightness(1);
+    }
+}
+
+@keyframes logoShine {
+    0% { filter: drop-shadow(0 0 30px rgba(249, 202, 36, 0.5)) brightness(1); }
+    50% { filter: drop-shadow(0 0 60px rgba(249, 202, 36, 1)) brightness(1.5); }
+    100% { filter: drop-shadow(0 0 40px rgba(249, 202, 36, 0.7)) brightness(1); }
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Вспышка */
+.intro-flash {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, #fff, rgba(249, 202, 36, 0.8) 30%, transparent 70%);
+    opacity: 0;
+    animation: flash 0.8s ease-out 1.2s;
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
+
+@keyframes flash {
+    0% { opacity: 0; transform: scale(0); }
+    30% { opacity: 1; transform: scale(2); }
+    100% { opacity: 0; transform: scale(3); }
+}
+
+/* Частицы */
+.intro-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.intro-particle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background: var(--gold, #f9ca24);
+    border-radius: 50%;
+    opacity: 0;
+    animation: particleFly 2s ease-out forwards;
+    box-shadow: 0 0 15px currentColor;
+}
+
+@keyframes particleFly {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+    20% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0.3);
+    }
+}
+
+/* Название клуба */
+.intro-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: #f9ca24;
+    letter-spacing: 4px;
+    text-shadow: 0 0 40px rgba(249, 202, 36, 0.8);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: titleIn 0.8s ease-out 1.5s forwards;
+    margin: 0;
+}
+
+@keyframes titleIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.intro-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: subtitleIn 0.8s ease-out 1.8s forwards;
+    margin: 0;
+}
+
+@keyframes subtitleIn {
+    to { opacity: 1; }
+}
+
+/* Loading bar */
+.intro-loader {
+    width: 200px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 15px;
+    opacity: 0;
+    animation: loaderIn 0.4s ease-out 1.8s forwards;
+}
+
+@keyframes loaderIn {
+    to { opacity: 1; }
+}
+
+.intro-loader-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #e67e22, #f9ca24, #ffe66d);
+    border-radius: 2px;
+    box-shadow: 0 0 15px rgba(249, 202, 36, 0.8);
+    animation: loaderFill 1.2s ease-out 1.9s forwards;
+}
+
+@keyframes loaderFill {
+    to { width: 100%; }
+}
+
+/* Кнопка "Пропустить" */
+.intro-skip {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 10px 22px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 3;
+    opacity: 0;
+    animation: skipIn 0.4s ease-out 1.5s forwards;
+    backdrop-filter: blur(10px);
+}
+
+.intro-skip:hover {
+    color: #f9ca24;
+    border-color: #f9ca24;
+    background: rgba(249, 202, 36, 0.1);
+    box-shadow: 0 0 20px rgba(249, 202, 36, 0.3);
+}
+
+@keyframes skipIn {
+    to { opacity: 1; }
+}
+
+/* Кнопка звука */
+.intro-sound-toggle {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 3;
+    opacity: 0;
+    animation: skipIn 0.4s ease-out 1.5s forwards;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+.intro-sound-toggle:hover {
+    color: #f9ca24;
+    border-color: #f9ca24;
+    background: rgba(249, 202, 36, 0.1);
+    transform: scale(1.1);
+}
+
+/* Финальная вспышка при закрытии */
+.intro-overlay.closing {
+    animation: introFadeOut 0.8s ease forwards;
+}
+
+@keyframes introFadeOut {
+    0% {
+        opacity: 1;
+        filter: brightness(1);
+    }
+    30% {
+        filter: brightness(3);
+    }
+    100% {
+        opacity: 0;
+        filter: brightness(5);
+        visibility: hidden;
+    }
+}
+
+/* ==================== АДАПТИВ ==================== */
+@media (max-width: 600px) {
+    .intro-logo-wrap {
+        width: 160px;
+        height: 160px;
+    }
+    .intro-logo {
+        width: 130px;
+        height: 130px;
+    }
+    .intro-skip {
+        bottom: 20px;
+        right: 20px;
+        padding: 8px 16px;
+        font-size: 0.72rem;
+    }
+    .intro-sound-toggle {
+        bottom: 20px;
+        left: 20px;
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+    .intro-title {
+        letter-spacing: 2px;
+    }
+    .intro-subtitle {
+        letter-spacing: 3px;
+    }
+}
+
+/* ==================== REDUCED MOTION ==================== */
+@media (prefers-reduced-motion: reduce) {
+    .intro-overlay,
+    .intro-logo,
+    .intro-flash,
+    .intro-particle,
+    .intro-rays {
+        animation: none !important;
+        transition: none !important;
+    }
+    .intro-logo {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: drop-shadow(0 0 30px rgba(249, 202, 36, 0.5)) !important;
+    }
+    .intro-title, .intro-subtitle, .intro-loader, .intro-skip, .intro-sound-toggle {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    .intro-loader-fill { width: 100% !important; }
+}

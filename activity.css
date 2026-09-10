@@ -1,0 +1,286 @@
+/* ==================== LIVE БЕЙДЖ ==================== */
+.live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background: rgba(235, 77, 75, 0.15);
+    border: 2px solid #eb4d4b;
+    border-radius: 50px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.8rem;
+    color: #eb4d4b;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(235, 77, 75, 0.4);
+}
+.live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #eb4d4b;
+    box-shadow: 0 0 10px #eb4d4b;
+    animation: livePulse 1.5s infinite;
+}
+@keyframes livePulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+}
+
+/* ==================== LIVE СТАТИСТИКА ==================== */
+.live-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.live-stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+}
+.live-stat-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+    box-shadow: 0 15px 40px rgba(249, 202, 36, 0.2);
+}
+.live-stat-icon {
+    font-size: 1.8rem;
+    display: block;
+    margin-bottom: 6px;
+}
+.live-stat-value {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    line-height: 1;
+    text-shadow: 0 0 15px rgba(249, 202, 36, 0.5);
+}
+.live-stat-label {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 6px;
+}
+
+/* ==================== ФИЛЬТРЫ ==================== */
+#activity-filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+#activity-filters .filter-btn {
+    padding: 8px 18px;
+    font-size: 0.82rem;
+}
+
+/* ==================== TIMELINE ==================== */
+.activity-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 50px;
+}
+.activity-timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--gold), var(--pink), var(--purple), transparent);
+    border-radius: 2px;
+    box-shadow: 0 0 20px rgba(249, 202, 36, 0.3);
+}
+
+.activity-item {
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 22px;
+    margin-bottom: 18px;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+    animation: activityIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes activityIn {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+.activity-item:hover {
+    transform: translateX(8px);
+    border-color: var(--gold);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(249, 202, 36, 0.2);
+}
+
+/* Индикатор на линии */
+.activity-item::before {
+    content: '';
+    position: absolute;
+    left: -38px;
+    top: 26px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 3px solid var(--bg);
+    box-shadow: 0 0 15px var(--gold);
+    z-index: 2;
+}
+.activity-item[data-cat="rank"]::before { background: #f9ca24; box-shadow: 0 0 15px #f9ca24; }
+.activity-item[data-cat="achievement"]::before { background: #9b59b6; box-shadow: 0 0 15px #9b59b6; }
+.activity-item[data-cat="rankup"]::before { background: #ff4757; box-shadow: 0 0 15px #ff4757; }
+.activity-item[data-cat="record"]::before { background: #e67e22; box-shadow: 0 0 15px #e67e22; }
+.activity-item[data-cat="event"]::before { background: #6ab04c; box-shadow: 0 0 15px #6ab04c; }
+.activity-item[data-cat="minigame"]::before { background: #3498db; box-shadow: 0 0 15px #3498db; }
+
+/* Пульсация для свежих событий */
+.activity-item.fresh::before {
+    animation: freshPulse 2s infinite;
+}
+@keyframes freshPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+}
+
+/* Шапка события */
+.activity-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+.activity-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 10px rgba(249, 202, 36, 0.4));
+}
+.activity-info {
+    flex: 1;
+    min-width: 0;
+}
+.activity-nick {
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.95rem;
+    color: var(--gold);
+    margin-bottom: 2px;
+}
+.activity-time {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+}
+
+/* Текст события */
+.activity-text {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--text);
+}
+.activity-text strong {
+    color: var(--gold);
+    font-weight: 800;
+}
+.activity-text .highlight-green {
+    color: var(--green);
+    font-weight: 800;
+}
+.activity-text .highlight-pink {
+    color: var(--pink);
+    font-weight: 800;
+}
+.activity-text .highlight-purple {
+    color: #a29bfe;
+    font-weight: 800;
+}
+
+/* Значок "новое" */
+.activity-new-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    background: linear-gradient(135deg, #eb4d4b, #c0392b);
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: 900;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: 8px;
+    animation: newBadgePulse 2s infinite;
+}
+@keyframes newBadgePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+/* Пустое состояние */
+.activity-empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-dim);
+    font-size: 1rem;
+}
+.activity-empty-icon {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 15px;
+    opacity: 0.4;
+}
+
+/* Кнопка "Загрузить ещё" */
+.activity-load-more {
+    display: block;
+    margin: 30px auto 0;
+    padding: 14px 40px;
+    background: transparent;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    border-radius: 50px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.activity-load-more:hover {
+    background: var(--gold);
+    color: #1a1a2e;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(249, 202, 36, 0.5);
+}
+
+/* Новое событие — анимация сверху */
+.activity-item.new-event {
+    animation: newEventIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes newEventIn {
+    from { opacity: 0; transform: translateY(-40px) scale(0.9); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ==================== АДАПТИВ ==================== */
+@media (max-width: 600px) {
+    .activity-timeline {
+        padding-left: 35px;
+    }
+    .activity-timeline::before {
+        left: 12px;
+    }
+    .activity-item::before {
+        left: -30px;
+        width: 14px;
+        height: 14px;
+    }
+    .activity-item {
+        padding: 16px 18px;
+    }
+    .live-stat-card { padding: 16px; }
+    .live-stat-value { font-size: 1.5rem; }
+}

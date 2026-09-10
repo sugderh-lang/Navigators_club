@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎰 Рулетка и Рандомайзер — нагибаторы3000</title>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="roulette.css">
+</head>
+<body>
+
+    <div class="bg-layer" aria-hidden="true">
+        <div class="bg-gradient"></div>
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Логотип" class="logo-img">
+                <span class="logo-text">нагибаторы3000</span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="index.html">Главная</a>
+                <a href="castle.html">🏰 Карта</a>
+                <a href="profiles.html">👤 Профили</a>
+                <a href="ranks.html">🏅 Звания</a>
+                <a href="achievements.html">🏆 Достижения</a>
+                <a href="minigames.html">🎮 Мини-игры</a>
+                <a href="activity.html">📡 LIVE</a>
+                <a href="shop.html">💰 Магазин</a>
+                <a href="roulette.html" class="active">🎰 Рулетка</a>
+                <a href="core.html">🔒 Штаб</a>
+            </nav>
+            <div class="header-actions">
+                <button class="theme-btn" id="theme-toggle">🌙</button>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank" class="btn-tg">💬 Telegram</a>
+                <button class="burger" id="burger"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero compact">
+        <div class="container hero-content">
+            <h1 class="hero-title">🎰 Рулетка клуба</h1>
+            <p class="hero-slogan">Крути и получай советы, мемы и цитаты</p>
+        </div>
+    </section>
+
+    <!-- ВКЛАДКИ -->
+    <section class="section">
+        <div class="container">
+            <div class="tabs-nav reveal-up">
+                <button class="tab-nav-btn active" data-tab="roulette">
+                    🎡 Рулетка дня
+                </button>
+                <button class="tab-nav-btn" data-tab="randomizer">
+                    🎲 Рандомайзер пар
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ВКЛАДКА 1: РУЛЕТКА -->
+    <section class="section tab-content active" id="tab-roulette">
+        <div class="container">
+
+            <!-- СТАТУС -->
+            <div class="roulette-status reveal-up" id="roulette-status"></div>
+
+            <!-- КОЛЕСО -->
+            <div class="roulette-wrapper reveal-up">
+                <div class="roulette-wheel-container">
+                    <div class="roulette-arrow">▼</div>
+                    <div class="roulette-wheel" id="roulette-wheel">
+                        <div class="roulette-segment seg-1">💡</div>
+                        <div class="roulette-segment seg-2">😂</div>
+                        <div class="roulette-segment seg-3">💬</div>
+                        <div class="roulette-segment seg-4">🎯</div>
+                        <div class="roulette-segment seg-5">🏆</div>
+                        <div class="roulette-segment seg-6">🔥</div>
+                    </div>
+                </div>
+                <button class="roulette-spin-btn" id="roulette-spin-btn">
+                    🎡 КРУТИТЬ
+                </button>
+            </div>
+
+            <!-- РЕЗУЛЬТАТ -->
+            <div class="roulette-result" id="roulette-result" style="display:none;">
+                <div class="roulette-result-icon" id="roulette-result-icon">💡</div>
+                <div class="roulette-result-category" id="roulette-result-category">СОВЕТ</div>
+                <div class="roulette-result-text" id="roulette-result-text">
+                    Текст совета
+                </div>
+                <button class="roulette-again-btn" id="roulette-again-btn">
+                    🔄 Ещё раз (завтра)
+                </button>
+            </div>
+
+            <!-- ИСТОРИЯ -->
+            <h2 class="section-title reveal-up" style="margin-top:60px;">📜 Твои прошлые выпадения</h2>
+            <div class="roulette-history" id="roulette-history"></div>
+
+        </div>
+    </section>
+
+    <!-- ВКЛАДКА 2: РАНДОМАЙЗЕР -->
+    <section class="section tab-content" id="tab-randomizer">
+        <div class="container">
+
+            <div class="randomizer-panel reveal-up">
+                <h2 class="section-title">🎲 Рандомайзер пар</h2>
+                <p class="section-sub">Случайно распределяй игроков по командам</p>
+
+                <!-- ВЫБОР РЕЖИМА -->
+                <div class="rand-mode-selector">
+                    <button class="rand-mode-btn active" data-mode="megapig">
+                        🐷 Мегакопилка
+                    </button>
+                    <button class="rand-mode-btn" data-mode="merport">
+                        🎯 Мерпорт
+                    </button>
+                    <button class="rand-mode-btn" data-mode="clubwars">
+                        ⚔️ Клубные войны
+                    </button>
+                    <button class="rand-mode-btn" data-mode="custom">
+                        🎮 Свой режим
+                    </button>
+                </div>
+
+                <!-- НАСТРОЙКИ -->
+                <div class="rand-settings">
+                    <div class="rand-setting">
+                        <label>👥 Сколько игроков:</label>
+                        <select id="rand-count">
+                            <option value="6">6 игроков</option>
+                            <option value="9" selected>9 игроков</option>
+                            <option value="12">12 игроков</option>
+                            <option value="15">15 игроков</option>
+                            <option value="18">18 игроков</option>
+                            <option value="21">21 игрок</option>
+                            <option value="24">24 игрока</option>
+                            <option value="27">27 игроков</option>
+                            <option value="30">Все 30</option>
+                        </select>
+                    </div>
+                    <div class="rand-setting">
+                        <label>👥 Игроков в команде:</label>
+                        <select id="rand-team-size">
+                            <option value="2">2 (пары)</option>
+                            <option value="3" selected>3 (тройки)</option>
+                            <option value="4">4 (квады)</option>
+                            <option value="5">5 (пятёрки)</option>
+                        </select>
+                    </div>
+                    <div class="rand-setting">
+                        <label>🎯 Только элита:</label>
+                        <input type="checkbox" id="rand-only-elite">
+                    </div>
+                    <div class="rand-setting">
+                        <label>🎯 Только ветераны:</label>
+                        <input type="checkbox" id="rand-only-veteran">
+                    </div>
+                </div>
+
+                <!-- КНОПКА -->
+                <button class="rand-generate-btn" id="rand-generate-btn">
+                    🎲 СГЕНЕРИРОВАТЬ КОМАНДЫ
+                </button>
+
+                <!-- РЕЗУЛЬТАТ -->
+                <div class="rand-result" id="rand-result" style="display:none;">
+                    <div class="rand-result-header">
+                        <h3>🎯 Команды для <span id="rand-result-mode">Мегакопилки</span></h3>
+                        <button class="rand-reroll-btn" id="rand-reroll-btn">🔄 Перемешать</button>
+                    </div>
+                    <div class="rand-teams" id="rand-teams"></div>
+                    <div class="rand-actions">
+                        <button class="rand-action-btn" id="rand-copy-btn">📋 Скопировать</button>
+                        <button class="rand-action-btn" id="rand-share-btn">📤 В Telegram</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Логотип">
+                <span>нагибаторы3000</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">← На главную</a>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank">💬 Telegram</a>
+            </div>
+            <p class="footer-copy">© 2026 нагибаторы3000</p>
+        </div>
+    </footer>
+
+    <!-- МОДАЛКА РЕЗУЛЬТАТА РУЛЕТКИ -->
+    <div class="roulette-modal" id="roulette-modal">
+        <div class="roulette-modal-content">
+            <div class="roulette-modal-flash"></div>
+            <div class="roulette-modal-particles" id="roulette-modal-particles"></div>
+            <div class="roulette-modal-icon" id="roulette-modal-icon">💡</div>
+            <div class="roulette-modal-category" id="roulette-modal-category">СОВЕТ</div>
+            <div class="roulette-modal-text" id="roulette-modal-text">Текст</div>
+            <button class="roulette-modal-btn" id="roulette-modal-close">🎉 Забрать</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="roulette.js"></script>
+</body>
+</html>

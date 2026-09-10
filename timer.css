@@ -1,0 +1,363 @@
+/* ==================== ТАЙМЕР ДО СОБЫТИЯ ==================== */
+.event-timer-section {
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.event-timer-panel {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: linear-gradient(135deg, rgba(249, 202, 36, 0.12), rgba(235, 77, 75, 0.08), var(--card));
+    border: 3px solid var(--gold);
+    border-radius: 26px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 60px rgba(249, 202, 36, 0.4);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+.event-timer-panel::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: conic-gradient(from 0deg, transparent, rgba(249, 202, 36, 0.2), transparent 30%);
+    animation: rotateShine 12s linear infinite;
+    pointer-events: none;
+}
+
+/* Заголовок события */
+.event-timer-header {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 30px;
+}
+
+.event-timer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 18px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-strong);
+    border-radius: 50px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.event-timer-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #eb4d4b;
+    box-shadow: 0 0 10px #eb4d4b;
+    animation: livePulse 1.5s infinite;
+}
+@keyframes livePulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+}
+
+.event-timer-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    color: var(--gold);
+    text-shadow: 0 0 30px rgba(249, 202, 36, 0.6);
+    margin-bottom: 10px;
+    line-height: 1.1;
+}
+
+.event-timer-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    font-style: italic;
+}
+
+/* Цифры таймера */
+.event-timer-digits {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-width: 640px;
+    margin: 0 auto 30px;
+}
+
+.event-timer-digit {
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid var(--border);
+    border-radius: 18px;
+    padding: 20px 10px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+.event-timer-digit:hover {
+    border-color: var(--gold);
+    box-shadow: 0 0 25px rgba(249, 202, 36, 0.3);
+    transform: translateY(-4px);
+}
+.event-timer-digit::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.5;
+}
+
+.event-timer-digit-value {
+    font-family: 'Russo One', sans-serif;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+    text-shadow: 0 0 30px rgba(249, 202, 36, 0.6);
+    letter-spacing: 2px;
+    transition: transform 0.3s;
+}
+.event-timer-digit-value.flip {
+    animation: digitFlip 0.5s ease;
+}
+@keyframes digitFlip {
+    0% { transform: rotateX(0); }
+    50% { transform: rotateX(90deg); opacity: 0.3; }
+    100% { transform: rotateX(0); }
+}
+
+.event-timer-digit-label {
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 8px;
+    font-weight: 700;
+}
+
+/* Прогресс между событиями */
+.event-timer-progress {
+    position: relative;
+    z-index: 2;
+    max-width: 640px;
+    margin: 0 auto 30px;
+}
+.event-timer-progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+.event-timer-progress-label strong { color: var(--gold); }
+.event-timer-progress-track {
+    height: 12px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+.event-timer-progress-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+    border-radius: 6px;
+    transition: width 1s ease;
+    box-shadow: 0 0 15px rgba(249, 202, 36, 0.6);
+    position: relative;
+}
+.event-timer-progress-fill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+    animation: progressShimmer 2.5s infinite;
+}
+@keyframes progressShimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Список ближайших событий */
+.event-timer-list {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.event-timer-item {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 15px 16px;
+    text-align: left;
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+.event-timer-item:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+.event-timer-item.active {
+    border-color: var(--gold);
+    background: linear-gradient(135deg, rgba(249, 202, 36, 0.15), rgba(0, 0, 0, 0.3));
+    box-shadow: 0 0 25px rgba(249, 202, 36, 0.3);
+}
+.event-timer-item.active::before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; left: 0;
+    width: 3px;
+    background: var(--gold);
+    box-shadow: 0 0 10px var(--gold);
+}
+.event-timer-item-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+.event-timer-item-icon {
+    font-size: 1.2rem;
+}
+.event-timer-item-name {
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.85rem;
+    color: var(--gold);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.event-timer-item-date {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    font-weight: 600;
+}
+.event-timer-item-day {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 6px;
+}
+.event-timer-item-day.soon {
+    background: linear-gradient(135deg, #eb4d4b, #c0392b);
+    color: #fff;
+    animation: livePulse 2s infinite;
+}
+.event-timer-item-day.today {
+    background: linear-gradient(135deg, #6ab04c, #2ecc71);
+    color: #fff;
+}
+.event-timer-item-day.week {
+    background: rgba(249, 202, 36, 0.2);
+    color: var(--gold);
+    border: 1px solid var(--gold);
+}
+.event-timer-item-day.future {
+    background: rgba(162, 181, 211, 0.15);
+    color: var(--text-dim);
+}
+
+/* Уведомление — событие скоро */
+.event-timer-alert {
+    position: relative;
+    z-index: 2;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 15px 25px;
+    margin: 25px auto 0;
+    max-width: 500px;
+    background: linear-gradient(135deg, rgba(235, 77, 75, 0.2), rgba(235, 77, 75, 0.05));
+    border: 2px solid #eb4d4b;
+    border-radius: 50px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.85rem;
+    color: #eb4d4b;
+    letter-spacing: 1px;
+    animation: alertShake 0.6s ease-in-out infinite;
+}
+.event-timer-alert.show { display: flex; }
+@keyframes alertShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    75% { transform: translateX(3px); }
+}
+.event-timer-alert-icon {
+    font-size: 1.5rem;
+    animation: livePulse 1s infinite;
+}
+
+/* Завершение */
+.event-timer-finished {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 30px;
+}
+.event-timer-finished-icon {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 15px;
+    animation: finishedBounce 1s ease-in-out infinite;
+}
+@keyframes finishedBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.05); }
+}
+.event-timer-finished-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.8rem;
+    color: #6ab04c;
+    text-shadow: 0 0 30px rgba(106, 176, 76, 0.6);
+    margin-bottom: 10px;
+}
+.event-timer-finished-text {
+    font-size: 1rem;
+    color: var(--text-dim);
+}
+
+/* ==================== АДАПТИВ ==================== */
+@media (max-width: 700px) {
+    .event-timer-panel { padding: 30px 20px; }
+    .event-timer-digits { gap: 10px; }
+    .event-timer-digit { padding: 15px 6px; border-radius: 14px; }
+    .event-timer-digit-value { letter-spacing: 1px; }
+    .event-timer-digit-label { font-size: 0.6rem; letter-spacing: 1px; }
+    .event-timer-list { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 400px) {
+    .event-timer-digits { gap: 6px; }
+    .event-timer-digit { padding: 12px 4px; }
+    .event-timer-digit-value { font-size: 1.6rem; }
+}
+
+/* ==================== REDUCED MOTION ==================== */
+@media (prefers-reduced-motion: reduce) {
+    .event-timer-panel::before,
+    .event-timer-pulse,
+    .event-timer-alert,
+    .event-timer-finished-icon,
+    .event-timer-progress-fill::after {
+        animation: none !important;
+    }
+}

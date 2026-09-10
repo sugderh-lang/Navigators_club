@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏰 Карта клуба — нагибаторы3000</title>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="castle.css">
+</head>
+<body>
+
+    <div class="bg-layer" aria-hidden="true">
+        <div class="bg-gradient"></div>
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Логотип" class="logo-img">
+                <span class="logo-text">нагибаторы3000</span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="index.html">Главная</a>
+                <a href="castle.html" class="active">🏰 Карта</a>
+                <a href="profiles.html">👤 Профили</a>
+                <a href="ranks.html">🏅 Звания</a>
+                <a href="achievements.html">🏆 Достижения</a>
+                <a href="minigames.html">🎮 Мини-игры</a>
+                <a href="activity.html">📡 LIVE</a>
+                <a href="shop.html">💰 Магазин</a>
+                <a href="core.html">🔒 Штаб</a>
+            </nav>
+            <div class="header-actions">
+                <button class="theme-btn" id="theme-toggle">🌙</button>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank" class="btn-tg">💬 Telegram</a>
+                <button class="burger" id="burger"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero compact">
+        <div class="container hero-content">
+            <h1 class="hero-title">🏰 Карта клуба</h1>
+            <p class="hero-slogan">Виртуальный замок «нагибаторы3000»</p>
+        </div>
+    </section>
+
+    <!-- СТАТИСТИКА ЗАМКА -->
+    <section class="section">
+        <div class="container">
+            <div class="castle-stats reveal-up" id="castle-stats"></div>
+        </div>
+    </section>
+
+    <!-- КАРТА ЗАМКА -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title reveal-up">🗺️ Кликни по комнате</h2>
+            <p class="section-sub reveal-up">Каждая комната ведёт в свой раздел сайта</p>
+
+            <div class="castle-wrapper reveal-up">
+                <div class="castle-glow"></div>
+                <div class="castle-grid" id="castle-grid"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЛЕГЕНДА -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title reveal-up">🔍 Легенда</h2>
+            <div class="castle-legend reveal-up" id="castle-legend"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Логотип">
+                <span>нагибаторы3000</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">← На главную</a>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank">💬 Telegram</a>
+            </div>
+            <p class="footer-copy">© 2026 нагибаторы3000</p>
+        </div>
+    </footer>
+
+    <!-- МОДАЛКА КОМНАТЫ -->
+    <div class="castle-modal" id="castle-modal">
+        <div class="castle-modal-content">
+            <button class="castle-modal-close" id="castle-modal-close">✕</button>
+            <div class="castle-modal-icon" id="castle-modal-icon">🏰</div>
+            <div class="castle-modal-name" id="castle-modal-name">Название</div>
+            <div class="castle-modal-desc" id="castle-modal-desc">Описание</div>
+            <div class="castle-modal-info" id="castle-modal-info"></div>
+            <div class="castle-modal-buttons" id="castle-modal-buttons"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="castle.js"></script>
+</body>
+</html>

@@ -1,0 +1,371 @@
+/* ==================== СТАТИСТИКА ЗАМКА ==================== */
+.castle-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.castle-stat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+}
+.castle-stat:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+    box-shadow: 0 15px 40px rgba(249, 202, 36, 0.2);
+}
+.castle-stat-icon {
+    font-size: 1.8rem;
+    display: block;
+    margin-bottom: 6px;
+}
+.castle-stat-value {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    line-height: 1;
+    text-shadow: 0 0 15px rgba(249, 202, 36, 0.5);
+}
+.castle-stat-label {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 6px;
+}
+
+/* ==================== ОБЁРТКА КАРТЫ ==================== */
+.castle-wrapper {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(108, 92, 231, 0.08), rgba(235, 77, 75, 0.05));
+    border: 2px solid var(--border);
+    border-radius: 28px;
+    backdrop-filter: blur(15px);
+    overflow: hidden;
+}
+.castle-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(249, 202, 36, 0.1), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(235, 77, 75, 0.08), transparent 50%);
+    pointer-events: none;
+}
+.castle-glow {
+    position: absolute;
+    inset: -50%;
+    background: conic-gradient(from 0deg, transparent, rgba(249, 202, 36, 0.08), transparent 30%);
+    animation: rotateShine 20s linear infinite;
+    pointer-events: none;
+}
+@keyframes rotateShine { to { transform: rotate(360deg); } }
+
+/* ==================== СЕТКА КОМНАТ ==================== */
+.castle-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 16px;
+    min-height: 560px;
+}
+
+/* Центральный тронный зал */
+.castle-room[data-room="throne"] {
+    grid-column: 2;
+    grid-row: 2;
+    transform: scale(1.05);
+}
+
+/* ==================== КОМНАТА ==================== */
+.castle-room {
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    padding: 22px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+    backdrop-filter: blur(10px);
+}
+.castle-room::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(249, 202, 36, 0.15), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.castle-room:hover {
+    transform: translateY(-6px) scale(1.03);
+    border-color: var(--gold);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 50px rgba(249, 202, 36, 0.4);
+    z-index: 5;
+}
+.castle-room:hover::before { opacity: 1; }
+
+.castle-room-icon {
+    font-size: 2.8rem;
+    display: block;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 0 15px rgba(249, 202, 36, 0.4));
+    transition: transform 0.3s;
+}
+.castle-room:hover .castle-room-icon {
+    transform: scale(1.2) rotate(-5deg);
+}
+.castle-room-name {
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.9rem;
+    color: var(--gold);
+    margin-bottom: 4px;
+    position: relative;
+    z-index: 2;
+    line-height: 1.2;
+}
+.castle-room-desc {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    position: relative;
+    z-index: 2;
+}
+
+/* ==================== ЦВЕТА КОМНАТ ==================== */
+.castle-room[data-room="throne"] {
+    border-color: var(--gold);
+    background: linear-gradient(135deg, rgba(249, 202, 36, 0.15), var(--card));
+    box-shadow: 0 0 40px rgba(249, 202, 36, 0.3);
+}
+.castle-room[data-room="throne"] .castle-room-icon {
+    font-size: 3.5rem;
+    animation: crownFloat 3s ease-in-out infinite;
+}
+@keyframes crownFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.castle-room[data-room="training"] { border-color: #eb4d4b; }
+.castle-room[data-room="training"]:hover { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 50px rgba(235, 77, 75, 0.4); }
+
+.castle-room[data-room="trophy"] { border-color: #f9ca24; }
+.castle-room[data-room="trophy"]:hover { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 50px rgba(249, 202, 36, 0.5); }
+
+.castle-room[data-room="chat"] { border-color: #229ED9; }
+.castle-room[data-room="chat"]:hover { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 50px rgba(34, 158, 217, 0.5); }
+
+.castle-room[data-room="barracks"] { border-color: #6c5ce7; }
+.castle-room[data-room="barracks"]:hover { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 50px rgba(108, 92, 231, 0.5); }
+
+.castle-room[data-room="arcade"] { border-color: #6ab04c; }
+.castle-room[data-room="arcade"]:hover { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 50px rgba(106, 176, 76, 0.5); }
+
+.castle-room[data-room="treasury"] { border-color: #e67e22; }
+.castle-room[data-room="treasury"]:hover { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 50px rgba(230, 126, 34, 0.5); }
+
+.castle-room[data-room="scout"] { border-color: #00b894; }
+.castle-room[data-room="scout"]:hover { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 50px rgba(0, 184, 148, 0.5); }
+
+.castle-room[data-room="vault"] { border-color: #ff4757; }
+.castle-room[data-room="vault"]:hover { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 50px rgba(255, 71, 87, 0.5); }
+
+/* ==================== ЛЕГЕНДА ==================== */
+.castle-legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+.legend-item:hover {
+    border-color: var(--gold);
+    transform: translateX(5px);
+}
+.legend-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+/* ==================== МОДАЛКА КОМНАТЫ ==================== */
+.castle-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 3000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.castle-modal.active {
+    display: flex;
+    animation: fadeIn 0.3s;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.castle-modal-content {
+    background: var(--card-solid);
+    border: 2px solid var(--gold);
+    border-radius: 24px;
+    padding: 35px 30px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    animation: castleModalIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 0 80px rgba(249, 202, 36, 0.5);
+    overflow: hidden;
+}
+@keyframes castleModalIn {
+    from { transform: scale(0.85) translateY(20px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.castle-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+    z-index: 10;
+}
+.castle-modal-close:hover { color: var(--pink); transform: rotate(90deg); }
+
+.castle-modal-icon {
+    font-size: 4.5rem;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 25px rgba(249, 202, 36, 0.7));
+    animation: modalIconFloat 3s ease-in-out infinite;
+}
+@keyframes modalIconFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.castle-modal-name {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.6rem;
+    color: var(--gold);
+    margin-bottom: 12px;
+    text-shadow: 0 0 25px rgba(249, 202, 36, 0.5);
+}
+
+.castle-modal-desc {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.castle-modal-info {
+    padding: 16px;
+    background: rgba(249, 202, 36, 0.08);
+    border-radius: 14px;
+    margin-bottom: 22px;
+    font-size: 0.88rem;
+    color: var(--text);
+    text-align: left;
+    border: 1px solid var(--border);
+}
+.castle-modal-info strong { color: var(--gold); }
+
+.castle-modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.castle-modal-btn {
+    padding: 12px 26px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #1a1a2e;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 6px 20px rgba(249, 202, 36, 0.4);
+}
+.castle-modal-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 35px rgba(249, 202, 36, 0.7);
+}
+.castle-modal-btn.secondary {
+    background: transparent;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    box-shadow: none;
+}
+.castle-modal-btn.secondary:hover {
+    background: var(--gold);
+    color: #1a1a2e;
+}
+
+/* ==================== АДАПТИВ ==================== */
+@media (max-width: 800px) {
+    .castle-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+    .castle-room[data-room="throne"] {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        transform: none;
+    }
+    .castle-wrapper { padding: 25px 20px; }
+}
+
+@media (max-width: 500px) {
+    .castle-grid {
+        grid-template-columns: 1fr;
+    }
+    .castle-room {
+        min-height: 110px;
+        padding: 16px 14px;
+    }
+    .castle-room-icon { font-size: 2.2rem; }
+    .castle-room[data-room="throne"] .castle-room-icon { font-size: 2.8rem; }
+    .castle-modal-content { padding: 28px 22px; }
+    .castle-modal-name { font-size: 1.3rem; }
+    .castle-modal-icon { font-size: 3.5rem; }
+}

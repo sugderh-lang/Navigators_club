@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏅 Звания клуба — нагибаторы3000</title>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ranks.css">
+</head>
+<body>
+
+    <div class="bg-layer" aria-hidden="true">
+        <div class="bg-gradient"></div>
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
+    </div>
+
+    <!-- ШАПКА -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Логотип" class="logo-img">
+                <span class="logo-text">нагибаторы3000</span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="index.html">Главная</a>
+                <a href="profiles.html">👤 Профили</a>
+                <a href="ranks.html" class="active">🏅 Звания</a>
+                <a href="guides.html">📚 Гайды</a>
+                <a href="team.html">🏆 Киберспорт</a>
+                <a href="core.html">🔒 Штаб</a>
+            </nav>
+            <div class="header-actions">
+                <button class="theme-btn" id="theme-toggle">🌙</button>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank" class="btn-tg">💬 Telegram</a>
+                <button class="burger" id="burger"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero compact">
+        <div class="container hero-content">
+            <h1 class="hero-title">🏅 Звания клуба</h1>
+            <p class="hero-slogan">Путь от новичка до Тирана</p>
+        </div>
+    </section>
+
+    <!-- ЛЕСТНИЦА ЗВАНИЙ -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title reveal-up">🪜 Лестница званий</h2>
+            <p class="section-sub reveal-up">Наведи на звание, чтобы увидеть требования</p>
+            <div class="ranks-ladder" id="ranks-ladder"></div>
+        </div>
+    </section>
+
+    <!-- МОЁ ЗВАНИЕ -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title reveal-up">👤 Моё звание</h2>
+            <p class="section-sub reveal-up">Прогресс до следующего звания</p>
+            <div class="my-rank-panel reveal-up" id="my-rank-panel"></div>
+        </div>
+    </section>
+
+    <!-- ВСЕ ЗВАНИЯ ПОДРОБНО -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title reveal-up">📜 Подробно о каждом звании</h2>
+            <div class="ranks-detailed" id="ranks-detailed"></div>
+        </div>
+    </section>
+
+    <!-- УЧАСТНИКИ ПО ЗВАНИЯМ -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title reveal-up">👥 Участники по званиям</h2>
+            <p class="section-sub reveal-up">Кто в каком звании</p>
+            <div class="ranks-members" id="ranks-members"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Логотип">
+                <span>нагибаторы3000</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">← На главную</a>
+                <a href="profiles.html">👤 Профили</a>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank">💬 Telegram</a>
+            </div>
+            <p class="footer-copy">© 2026 нагибаторы3000</p>
+        </div>
+    </footer>
+
+    <!-- МОДАЛЬНОЕ ОКНО ПОВЫШЕНИЯ -->
+    <div class="rankup-modal" id="rankup-modal">
+        <div class="rankup-content">
+            <div class="rankup-flash"></div>
+            <div class="rankup-particles" id="rankup-particles"></div>
+            <div class="rankup-crown">👑</div>
+            <div class="rankup-icon" id="rankup-icon">🛡️</div>
+            <h2 class="rankup-title">Повышение!</h2>
+            <p class="rankup-subtitle" id="rankup-subtitle">Ты получил новое звание</p>
+            <div class="rankup-rank" id="rankup-rank">Ветеран</div>
+            <button class="rankup-btn" id="rankup-close">🎉 Принять</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="ranks.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏅 Бейджи посетителя — нагибаторы3000</title>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sounds.css">
+    <link rel="stylesheet" href="badges.css">
+</head>
+<body>
+
+    <div class="bg-layer" aria-hidden="true">
+        <div class="bg-gradient"></div>
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Логотип" class="logo-img">
+                <span class="logo-text">нагибаторы3000</span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="index.html">Главная</a>
+                <a href="castle.html">🏰 Карта</a>
+                <a href="profiles.html">👤 Профили</a>
+                <a href="ranks.html">🏅 Звания</a>
+                <a href="achievements.html">🏆 Достижения</a>
+                <a href="minigames.html">🎮 Мини-игры</a>
+                <a href="activity.html">📡 LIVE</a>
+                <a href="shop.html">💰 Магазин</a>
+                <a href="roulette.html">🎰 Рулетка</a>
+                <a href="badges.html" class="active">🏅 Бейджи</a>
+                <a href="core.html">🔒 Штаб</a>
+            </nav>
+            <div class="header-actions">
+                <button class="theme-btn" id="theme-toggle">🌙</button>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank" class="btn-tg">💬 Telegram</a>
+                <button class="burger" id="burger"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero compact">
+        <div class="container hero-content">
+            <h1 class="hero-title">🏅 Бейджи посетителя</h1>
+            <p class="hero-slogan">Твои достижения на сайте клуба</p>
+        </div>
+    </section>
+
+    <!-- СТАТИСТИКА ПОСЕТИТЕЛЯ -->
+    <section class="section">
+        <div class="container">
+            <div class="visitor-stats reveal-up" id="visitor-stats"></div>
+        </div>
+    </section>
+
+    <!-- ПРОГРЕСС -->
+    <section class="section">
+        <div class="container">
+            <div class="badges-progress-panel reveal-up" id="badges-progress-panel"></div>
+        </div>
+    </section>
+
+    <!-- ФИЛЬТРЫ -->
+    <section class="section">
+        <div class="container">
+            <div class="filters reveal-up" id="badge-filters">
+                <button class="filter-btn active" data-cat="all">🏅 Все</button>
+                <button class="filter-btn" data-cat="visit">🚪 Посещения</button>
+                <button class="filter-btn" data-cat="explore">🗺️ Исследование</button>
+                <button class="filter-btn" data-cat="social">💬 Соцсети</button>
+                <button class="filter-btn" data-cat="secret">🔒 Секретные</button>
+                <button class="filter-btn" data-cat="special">⭐ Особые</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕТКА БЕЙДЖЕЙ -->
+    <section class="section">
+        <div class="container">
+            <div class="badges-grid" id="badges-grid"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Логотип">
+                <span>нагибаторы3000</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">← На главную</a>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank">💬 Telegram</a>
+            </div>
+            <p class="footer-copy">© 2026 нагибаторы3000</p>
+        </div>
+    </footer>
+
+    <!-- МОДАЛКА РАЗБЛОКИРОВКИ -->
+    <div class="badge-modal" id="badge-modal">
+        <div class="badge-modal-content">
+            <div class="badge-modal-flash"></div>
+            <div class="badge-modal-particles" id="badge-modal-particles"></div>
+            <div class="badge-modal-icon" id="badge-modal-icon">🏅</div>
+            <div class="badge-modal-rarity" id="badge-modal-rarity">COMMON</div>
+            <h2 class="badge-modal-title">Новый бейдж!</h2>
+            <div class="badge-modal-name" id="badge-modal-name">Название</div>
+            <p class="badge-modal-desc" id="badge-modal-desc">Описание</p>
+            <button class="badge-modal-btn" id="badge-modal-close">🎉 Забрать</button>
+        </div>
+    </div>
+
+    <script src="sounds.js"></script>
+    <script src="script.js"></script>
+    <script src="badges.js"></script>
+</body>
+</html>

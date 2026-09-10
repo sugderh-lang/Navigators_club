@@ -1,0 +1,583 @@
+/* ==================== БАЛАНС ==================== */
+.balance-panel {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 35px 30px;
+    background: linear-gradient(135deg, rgba(249, 202, 36, 0.15), var(--card));
+    border: 3px solid var(--gold);
+    border-radius: 22px;
+    backdrop-filter: blur(15px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(249, 202, 36, 0.4);
+}
+.balance-panel::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: conic-gradient(from 0deg, transparent, rgba(249, 202, 36, 0.2), transparent 30%);
+    animation: rotateShine 10s linear infinite;
+    pointer-events: none;
+}
+.balance-label {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+.balance-value {
+    font-family: 'Russo One', sans-serif;
+    font-size: 3.5rem;
+    color: var(--gold);
+    line-height: 1;
+    text-shadow: 0 0 40px rgba(249, 202, 36, 0.8);
+    position: relative;
+    z-index: 2;
+    margin-bottom: 10px;
+}
+.balance-nick {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    position: relative;
+    z-index: 2;
+}
+.balance-nick strong { color: var(--gold); }
+.balance-hint {
+    margin-top: 15px;
+    font-size: 0.75rem;
+    color: var(--pink);
+    position: relative;
+    z-index: 2;
+    font-weight: 700;
+}
+
+/* ==================== КАК ЗАРАБОТАТЬ ==================== */
+.earn-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.earn-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 20px;
+    text-align: center;
+    transition: all 0.3s;
+}
+.earn-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--gold);
+    box-shadow: 0 15px 40px rgba(249, 202, 36, 0.2);
+}
+.earn-icon {
+    font-size: 2.4rem;
+    display: block;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 15px rgba(249, 202, 36, 0.4));
+}
+.earn-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1rem;
+    color: var(--gold);
+    margin-bottom: 8px;
+}
+.earn-desc {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+.earn-reward {
+    display: inline-block;
+    padding: 5px 14px;
+    background: rgba(249, 202, 36, 0.15);
+    border: 1px solid var(--border-strong);
+    border-radius: 20px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.85rem;
+    color: var(--gold);
+    font-weight: 800;
+}
+
+/* ==================== МАГАЗИН ==================== */
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.shop-card {
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 18px;
+    padding: 22px 18px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    backdrop-filter: blur(10px);
+}
+.shop-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Редкости */
+.shop-card.common { border-color: #95a5a6; }
+.shop-card.common:hover { box-shadow: 0 20px 50px rgba(149, 165, 166, 0.3); }
+.shop-card.rare { border-color: #3498db; }
+.shop-card.rare:hover { box-shadow: 0 20px 50px rgba(52, 152, 219, 0.4); }
+.shop-card.epic { border-color: #9b59b6; }
+.shop-card.epic:hover { box-shadow: 0 20px 50px rgba(155, 89, 182, 0.4); }
+.shop-card.legendary {
+    border-color: var(--gold);
+    background: linear-gradient(135deg, rgba(249, 202, 36, 0.12), var(--card));
+    box-shadow: 0 0 40px rgba(249, 202, 36, 0.3);
+}
+.shop-card.legendary:hover {
+    box-shadow: 0 20px 60px rgba(249, 202, 36, 0.6);
+}
+.shop-card.legendary::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: conic-gradient(from 0deg, transparent, rgba(249, 202, 36, 0.2), transparent 30%);
+    animation: rotateShine 8s linear infinite;
+    pointer-events: none;
+}
+
+/* Куплено */
+.shop-card.owned {
+    border-color: var(--green);
+    background: linear-gradient(135deg, rgba(106, 176, 76, 0.1), var(--card));
+}
+.shop-card.owned::after {
+    content: '✓';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--green);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    box-shadow: 0 0 20px rgba(106, 176, 76, 0.6);
+    z-index: 2;
+}
+
+/* Не хватает очков */
+.shop-card.not-enough {
+    opacity: 0.6;
+}
+.shop-card.not-enough .shop-buy-btn {
+    background: #7f8c8d;
+    cursor: not-allowed;
+    color: #ccc;
+}
+
+.shop-icon {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 15px rgba(249, 202, 36, 0.4));
+    transition: transform 0.3s;
+    position: relative;
+    z-index: 2;
+}
+.shop-card:hover .shop-icon {
+    transform: scale(1.15) rotate(-5deg);
+}
+
+.shop-name {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1rem;
+    color: var(--gold);
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 2;
+}
+.shop-desc {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 2;
+    min-height: 36px;
+}
+
+.shop-rarity {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.shop-price {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    position: relative;
+    z-index: 2;
+}
+.shop-price-icon {
+    font-size: 1.3rem;
+    filter: drop-shadow(0 0 8px rgba(249, 202, 36, 0.6));
+}
+
+.shop-buy-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #1a1a2e;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 6px 20px rgba(249, 202, 36, 0.4);
+}
+.shop-buy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(249, 202, 36, 0.7);
+}
+.shop-buy-btn.owned-btn {
+    background: linear-gradient(135deg, var(--green), #2ed573);
+    color: #fff;
+    cursor: default;
+}
+.shop-buy-btn.owned-btn:hover {
+    transform: none;
+}
+
+/* ==================== ИСТОРИЯ ПОКУПОК ==================== */
+.history-shop-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.history-shop-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 20px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+.history-shop-item:hover {
+    transform: translateX(6px);
+    border-color: var(--gold);
+}
+.history-shop-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+}
+.history-shop-info {
+    flex: 1;
+    min-width: 0;
+}
+.history-shop-name {
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.9rem;
+    color: var(--gold);
+    margin-bottom: 3px;
+}
+.history-shop-date {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+}
+.history-shop-price {
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.9rem;
+    color: var(--pink);
+    font-weight: 800;
+}
+
+/* ==================== МОДАЛКА ПОКУПКИ ==================== */
+.buy-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 3000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.buy-modal.active {
+    display: flex;
+    animation: fadeIn 0.3s;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.buy-modal-content {
+    background: var(--card-solid);
+    border: 2px solid var(--gold);
+    border-radius: 22px;
+    padding: 35px 30px;
+    text-align: center;
+    max-width: 420px;
+    width: 100%;
+    position: relative;
+    animation: buyIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 0 60px rgba(249, 202, 36, 0.4);
+}
+@keyframes buyIn {
+    from { transform: scale(0.85) translateY(20px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.buy-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+}
+.buy-modal-close:hover { color: var(--pink); transform: rotate(90deg); }
+
+.buy-modal-icon {
+    font-size: 4rem;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 25px rgba(249, 202, 36, 0.6));
+}
+.buy-modal-title {
+    font-family: 'Russo One', sans-serif;
+    color: var(--gold);
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+.buy-modal-name {
+    font-family: 'Russo One', sans-serif;
+    color: #fff;
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+.buy-modal-price {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 15px;
+    text-shadow: 0 0 20px rgba(249, 202, 36, 0.5);
+}
+.buy-modal-desc {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+}
+
+.buy-modal-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+.buy-btn-cancel {
+    padding: 13px;
+    background: transparent;
+    color: var(--text-dim);
+    border: 2px solid var(--border);
+    border-radius: 50px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.buy-btn-cancel:hover {
+    border-color: var(--pink);
+    color: var(--pink);
+}
+.buy-btn-confirm {
+    padding: 13px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #1a1a2e;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 20px rgba(249, 202, 36, 0.4);
+}
+.buy-btn-confirm:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(249, 202, 36, 0.7);
+}
+
+/* ==================== МОДАЛКА УСПЕХА ==================== */
+.success-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 3100;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.success-modal.active {
+    display: flex;
+    animation: fadeIn 0.4s;
+}
+
+.success-modal-content {
+    background: var(--card-solid);
+    border: 3px solid var(--gold);
+    border-radius: 24px;
+    padding: 45px 35px;
+    text-align: center;
+    max-width: 440px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 100px rgba(249, 202, 36, 0.8);
+    animation: successScaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes successScaleIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.success-flash {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(249, 202, 36, 0.8), transparent 70%);
+    opacity: 0;
+    animation: successFlash 1s ease-out 0.3s;
+    pointer-events: none;
+}
+@keyframes successFlash {
+    0% { opacity: 0; }
+    30% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.success-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+.success-particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: successParticle 2.5s ease-out forwards;
+}
+@keyframes successParticle {
+    0% { transform: translate(0, 0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+}
+
+.success-icon {
+    font-size: 5rem;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+    animation: successIcon 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+    filter: drop-shadow(0 0 40px rgba(249, 202, 36, 0.9));
+}
+@keyframes successIcon {
+    from { transform: scale(0) rotate(180deg); opacity: 0; }
+    to { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+.success-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.6rem;
+    color: var(--gold);
+    text-shadow: 0 0 30px rgba(249, 202, 36, 0.8);
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 0.6s ease-out 0.7s both;
+}
+.success-name {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 0.6s ease-out 0.85s both;
+}
+.success-desc {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 0.6s ease-out 1s both;
+}
+.success-btn {
+    padding: 14px 40px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #1a1a2e;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 1rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 0.6s ease-out 1.15s both;
+    box-shadow: 0 8px 30px rgba(249, 202, 36, 0.5);
+}
+.success-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 45px rgba(249, 202, 36, 0.8);
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================== АДАПТИВ ==================== */
+@media (max-width: 600px) {
+    .balance-value { font-size: 2.5rem; }
+    .shop-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+    .shop-card { padding: 18px 14px; }
+    .shop-icon { font-size: 2.5rem; }
+    .buy-modal-content, .success-modal-content { padding: 30px 22px; }
+    .buy-modal-buttons { grid-template-columns: 1fr; }
+}

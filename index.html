@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>нагибаторы3000 — Клуб Brawl Stars</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sounds.css">
+    <link rel="stylesheet" href="timer.css">
+    <link rel="stylesheet" href="intro.css">
+</head>
+<body>
+
+    <!-- ФОНОВЫЙ СЛОЙ -->
+    <div class="bg-layer" aria-hidden="true">
+        <div class="bg-gradient"></div>
+        <div class="bg-particles" id="bg-particles"></div>
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
+    </div>
+
+    <!-- ШАПКА -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Логотип" class="logo-img">
+                <span class="logo-text">нагибаторы3000</span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="index.html" class="active">Главная</a>
+                <a href="castle.html">🏰 Карта</a>
+                <a href="profiles.html">👤 Профили</a>
+                <a href="ranks.html">🏅 Звания</a>
+                <a href="achievements.html">🏆 Достижения</a>
+                <a href="minigames.html">🎮 Мини-игры</a>
+                <a href="activity.html">📡 LIVE</a>
+                <a href="shop.html">💰 Магазин</a>
+                <a href="roulette.html">🎰 Рулетка</a>
+                <a href="badges.html">🏅 Бейджи</a>
+                <a href="guides.html">📚 Гайды</a>
+                <a href="team.html">🏆 Киберспорт</a>
+                <a href="core.html">🔒 Штаб</a>
+            </nav>
+            <div class="header-actions">
+                <button class="theme-btn" id="theme-toggle" title="Сменить тему">🌙</button>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank" class="btn-tg">💬 Telegram</a>
+                <button class="burger" id="burger" aria-label="Меню">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+        <div class="hero-decor" aria-hidden="true">
+            <div class="hero-skull hero-skull-1">💀</div>
+            <div class="hero-skull hero-skull-2">👑</div>
+            <div class="hero-skull hero-skull-3">🏆</div>
+            <div class="hero-shine"></div>
+        </div>
+        <div class="container hero-inner">
+            <div class="hero-text" data-parallax="0.15">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Клуб топ-уровня · 30/30
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-line">ТИРАН</span>
+                    <span class="title-line title-line-2">НА МАРШЕ</span>
+                </h1>
+                <p class="hero-slogan">Клуб, где побеждают сильнейшие</p>
+                <div class="hero-buttons">
+                    <a href="https://link.brawlstars.com/invite/band/ru?tag=208PC0929&token=e7pmspne" target="_blank" class="btn btn-hero">
+                        <span class="btn-shimmer"></span>
+                        <span class="btn-label">⚔️ ВСТУПИТЬ В КЛУБ</span>
+                    </a>
+                    <a href="#players" class="btn btn-ghost">👥 Участники</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-card reveal-up">
+                        <span class="stat-icon">🏆</span>
+                        <span class="stat-value" data-count="1714576">0</span>
+                        <span class="stat-label">Кубки клуба</span>
+                    </div>
+                    <div class="stat-card reveal-up">
+                        <span class="stat-icon">👥</span>
+                        <span class="stat-value" data-count="30">0</span>
+                        <span class="stat-label">Участников</span>
+                    </div>
+                    <div class="stat-card reveal-up">
+                        <span class="stat-icon">⭐</span>
+                        <span class="stat-value" data-count="28">0</span>
+                        <span class="stat-label">Уровень</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual" data-parallax="-0.1">
+                <div class="hero-character">
+                    <div class="hero-character-glow"></div>
+                    <img src="images/logo.png" alt="Тиран на марше" class="hero-character-img">
+                    <div class="hero-character-ring"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ТАЙМЕР ДО СОБЫТИЯ ============ -->
+    <section class="event-timer-section" id="event-timer-container">
+        <!-- Таймер загрузится автоматически через timer.js -->
+    </section>
+
+    <!-- ============ БЫСТРЫЕ ССЫЛКИ НА РАЗДЕЛЫ ============ -->
+    <section class="section" id="quick-links">
+        <div class="container">
+            <h2 class="section-title reveal-up">🎯 Разделы сайта</h2>
+            <p class="section-sub reveal-up">Быстрый переход во все уголки клуба</p>
+            <div class="quick-links-grid reveal-up">
+
+                <a href="castle.html" class="quick-link-card">
+                    <span class="quick-link-icon">🏰</span>
+                    <span class="quick-link-name">Карта клуба</span>
+                    <span class="quick-link-desc">Виртуальный замок</span>
+                </a>
+
+                <a href="profiles.html" class="quick-link-card">
+                    <span class="quick-link-icon">👤</span>
+                    <span class="quick-link-name">Профили</span>
+                    <span class="quick-link-desc">30 игроков</span>
+                </a>
+
+                <a href="ranks.html" class="quick-link-card">
+                    <span class="quick-link-icon">🏅</span>
+                    <span class="quick-link-name">Звания</span>
+                    <span class="quick-link-desc">Участник → Президент</span>
+                </a>
+
+                <a href="achievements.html" class="quick-link-card">
+                    <span class="quick-link-icon">🏆</span>
+                    <span class="quick-link-name">Достижения</span>
+                    <span class="quick-link-desc">47 ачивок</span>
+                </a>
+
+                <a href="minigames.html" class="quick-link-card">
+                    <span class="quick-link-icon">🎮</span>
+                    <span class="quick-link-name">Мини-игры</span>
+                    <span class="quick-link-desc">6 игр + лидерборд</span>
+                </a>
+
+                <a href="activity.html" class="quick-link-card">
+                    <span class="quick-link-icon">📡</span>
+                    <span class="quick-link-name">LIVE-лента</span>
+                    <span class="quick-link-desc">События в реальном времени</span>
+                </a>
+
+                <a href="shop.html" class="quick-link-card">
+                    <span class="quick-link-icon">💰</span>
+                    <span class="quick-link-name">Магазин</span>
+                    <span class="quick-link-desc">25 наград</span>
+                </a>
+
+                <a href="roulette.html" class="quick-link-card">
+                    <span class="quick-link-icon">🎰</span>
+                    <span class="quick-link-name">Рулетка</span>
+                    <span class="quick-link-desc">+ рандомайзер пар</span>
+                </a>
+
+                <a href="badges.html" class="quick-link-card">
+                    <span class="quick-link-icon">🏅</span>
+                    <span class="quick-link-name">Бейджи</span>
+                    <span class="quick-link-desc">Твои достижения</span>
+                </a>
+
+                <a href="guides.html" class="quick-link-card">
+                    <span class="quick-link-icon">📚</span>
+                    <span class="quick-link-name">Гайды</span>
+                    <span class="quick-link-desc">Тир-лист и советы</span>
+                </a>
+
+                <a href="team.html" class="quick-link-card">
+                    <span class="quick-link-icon">🏆</span>
+                    <span class="quick-link-name">Киберспорт</span>
+                    <span class="quick-link-desc">Состав и турниры</span>
+                </a>
+
+                <a href="core.html" class="quick-link-card elite-link">
+                    <span class="quick-link-icon">🔒</span>
+                    <span class="quick-link-name">Штаб элиты</span>
+                    <span class="quick-link-desc">Только для своих</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ЭЛИТА ============ -->
+    <section class="section" id="elite">
+        <div class="container">
+            <h2 class="section-title reveal-up">🌟 Ядро клуба</h2>
+            <p class="section-sub reveal-up">Те, кто не просто в клубе, а в самом сердце — в Telegram-чате</p>
+            <div class="elite-grid stagger" id="elite-grid"></div>
+        </div>
+    </section>
+
+    <!-- ============ РЕЙТИНГ / КАРТОЧКИ ИГРОКОВ ============ -->
+    <section class="section" id="players">
+        <div class="container">
+            <h2 class="section-title reveal-up">👥 Рейтинг клуба</h2>
+            <p class="section-sub reveal-up">Топ игроков клуба · нажми на карточку для профиля</p>
+
+            <div class="podium" id="podium"></div>
+
+            <div class="filters reveal-up">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="elite">Элита</button>
+                <button class="filter-btn" data-filter="veteran">Ветераны</button>
+            </div>
+
+            <div class="player-cards stagger" id="player-cards"></div>
+        </div>
+    </section>
+
+    <!-- ============ МЕГАКОПИЛКА ============ -->
+    <section class="section" id="megapig">
+        <div class="container">
+            <h2 class="section-title reveal-up">🐷 Мегакопилка</h2>
+            <p class="section-sub reveal-up">Общий прогресс клуба и вклад каждого игрока</p>
+
+            <div class="stats-dashboard">
+                <div class="panel megapig-panel reveal-up">
+                    <h3>🐷 Прогресс мегакопилки</h3>
+                    <div class="progress">
+                        <div class="progress-fill" data-progress="70"></div>
+                        <div class="progress-glow"></div>
+                    </div>
+                    <p class="progress-text"><strong>35 000</strong> / 50 000 побед</p>
+                    <p class="timer-text">До конца события: <span id="megapig-timer">17:46:00</span></p>
+                    <p class="progress-hint">Осталось собрать: <strong>15 000 побед</strong></p>
+                </div>
+
+                <div class="panel reveal-up">
+                    <h3>🏆 Топ-3 по кубкам</h3>
+                    <ol class="top-list" id="top-trophies"></ol>
+                </div>
+                <div class="panel reveal-up">
+                    <h3>🎯 Топ-3 по мегакопилке</h3>
+                    <ol class="top-list" id="top-merport"></ol>
+                </div>
+            </div>
+
+            <h3 class="sub-title reveal-up">📋 Вклад игроков</h3>
+            <div class="table-wrap reveal-up">
+                <table class="megapig-table">
+                    <thead><tr><th>#</th><th>Ник</th><th>Победы</th></tr></thead>
+                    <tbody id="megapig-tbody"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ МИНИ-ИГРЫ ============ -->
+    <section class="section" id="minigames">
+        <div class="container">
+            <h2 class="section-title reveal-up">🎲 Мини-игры клуба</h2>
+            <p class="section-sub reveal-up">Наши традиции и развлечения вне клубных войн</p>
+
+            <div class="minigame-card reveal-up">
+                <div class="minigame-header">
+                    <span class="minigame-icon">🐻</span>
+                    <h3>«МЕДВЕДЬ-ШАТУН»</h3>
+                </div>
+                <div class="minigame-body">
+                    <p><strong>👥 Участники:</strong> Все, кроме Ниты. Нита — ведущий.</p>
+                    <p><strong>🎯 Цель:</strong> Выживать на ринге под агрессией медведя. Побеждает последний выживший.</p>
+                    <p><strong>⚙️ Ход игры:</strong></p>
+                    <ul>
+                        <li>Нита собирает ВСЕ банки (трогать их нельзя!)</li>
+                        <li>После сбора выпускает медведя в центр карты (ринг)</li>
+                        <li>Все игроки обязаны находиться на ринге</li>
+                    </ul>
+                    <p class="ok-title">✅ РАЗРЕШЕНО:</p>
+                    <ul class="ok-list">
+                        <li>Использовать способности для подстав противников под медведя</li>
+                        <li>Атаковать НИТУ для накопления Супера (но не добивать!)</li>
+                    </ul>
+                    <p class="no-title">❌ ЗАПРЕЩЕНО:</p>
+                    <ul class="no-list">
+                        <li>Убивать других игроков</li>
+                        <li>Убивать медведя</li>
+                        <li>Покидать ринг</li>
+                        <li>Собирать банки до выпуска медведя</li>
+                    </ul>
+                    <p class="warn-title">⚠️ ЧТО БУДЕТ ЗА НАРУШЕНИЯ:</p>
+                    <ul class="warn-list">
+                        <li>Клеймо нарушителя правил</li>
+                        <li>Пристальный взгляд других игроков</li>
+                        <li>Минус репутация, что повлечёт последствия</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="minigame-card chess-card reveal-up">
+                <div class="minigame-header">
+                    <span class="minigame-icon">♟️</span>
+                    <h3>ШАХМАТЫ</h3>
+                </div>
+                <div class="minigame-body">
+                    <p>Мы также пропагандируем <strong>интеллектуальные игры</strong>. Шахматы развивают стратегическое мышление, которое помогает и в Brawl Stars.</p>
+                    <p>Среди участников клуба есть любители шахмат. Мы устраиваем мини-турниры и обсуждаем партии.</p>
+                    <p class="quote-line">«Шахматы — это та же Brawl Stars, только без таймера и с большим количеством фигур».</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ЗАЛ СЛАВЫ ============ -->
+    <section class="section" id="hall">
+        <div class="container">
+            <h2 class="section-title reveal-up">🏆 Зал славы</h2>
+            <p class="section-sub reveal-up">Рекорды и легенды клуба</p>
+            <div class="hall-grid stagger" id="hall-grid"></div>
+        </div>
+    </section>
+
+    <!-- ============ КАЛЕНДАРЬ ============ -->
+    <section class="section" id="calendar">
+        <div class="container">
+            <h2 class="section-title reveal-up">📅 Календарь событий</h2>
+            <p class="section-sub reveal-up">Клубные дни, мегапорты и другие активности</p>
+            <div class="calendar-grid stagger" id="calendar-grid"></div>
+        </div>
+    </section>
+
+    <!-- ============ ПРАВИЛА ============ -->
+    <section class="section" id="rules">
+        <div class="container">
+            <h2 class="section-title reveal-up">📜 Правила клуба</h2>
+            <div class="rules-panel reveal-up">
+                <ol class="rules-list">
+                    <li>Использовать <strong>14 билетов</strong> на неделе лиги (по возможности играть в команде с членами клуба).</li>
+                    <li>Выполнять <strong>все клубные квесты</strong>, вне зависимости от заполнения шкалы.</li>
+                    <li>Относиться с <strong>уважением</strong> к участникам клуба и не спамить.</li>
+                </ol>
+                <div class="rules-note">
+                    <p>✅ Выполнение всех условий → <span class="gold">Ветеран</span></p>
+                    <p>❌ Невыполнение → понижение до участника / исключение</p>
+                    <p>⏳ Повышение до ветерана — за <strong>3 дня до окончания</strong> недели квестов</p>
+                    <p>🔄 Вернуть звание можно только на неделе лиги</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ЦЕННОСТИ ============ -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title reveal-up">💎 Наши ценности</h2>
+            <div class="values-grid stagger">
+                <div class="value-card">
+                    <span class="value-icon">💪</span>
+                    <h4>Здоровый образ жизни</h4>
+                    <p>Мы за активность, спорт и правильный отдых.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">🤝</span>
+                    <h4>Уважение к старшим</h4>
+                    <p>Уважаем опытных игроков, слушаем советы и помогаем новичкам.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">🏋️</span>
+                    <h4>Спорт и киберспорт</h4>
+                    <p>Развиваем реакцию, стратегию и командную работу.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">🧠</span>
+                    <h4>Интеллект</h4>
+                    <p>Шахматы, логика, стратегия — делают нас лучше в игре.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Логотип">
+                <span>нагибаторы3000</span>
+            </div>
+            <div class="footer-links">
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank">💬 Telegram-чат</a>
+                <a href="https://link.brawlstars.com/invite/band/ru?tag=208PC0929" target="_blank">⚔️ Клуб в игре</a>
+                <a href="castle.html">🏰 Карта клуба</a>
+                <a href="profiles.html">👤 Профили</a>
+                <a href="minigames.html">🎮 Мини-игры</a>
+                <a href="activity.html">📡 LIVE</a>
+                <a href="badges.html">🏅 Бейджи</a>
+                <a href="core.html" class="core-link">🔒 Штаб элиты</a>
+            </div>
+            <p class="footer-copy">© 2026 нагибаторы3000 · Сделано своими руками</p>
+        </div>
+    </footer>
+
+    <div class="modal" id="profile-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">✕</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- СКРИПТЫ -->
+    <script src="script.js"></script>
+    <script src="sounds.js"></script>
+    <script src="timer.js"></script>
+    <script src="intro.js"></script>
+</body>
+</html>

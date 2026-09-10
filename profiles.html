@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👤 Профили игроков — нагибаторы3000</title>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profiles.css">
+</head>
+<body>
+
+    <!-- ФОНОВЫЙ СЛОЙ -->
+    <div class="bg-layer" aria-hidden="true">
+        <div class="bg-gradient"></div>
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
+    </div>
+
+    <!-- ШАПКА -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Логотип" class="logo-img">
+                <span class="logo-text">нагибаторы3000</span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="index.html">Главная</a>
+                <a href="profiles.html" class="active">👤 Профили</a>
+                <a href="guides.html">📚 Гайды</a>
+                <a href="team.html">🏆 Киберспорт</a>
+                <a href="core.html">🔒 Штаб</a>
+            </nav>
+            <div class="header-actions">
+                <button class="theme-btn" id="theme-toggle">🌙</button>
+                <button class="sound-btn" id="sound-toggle" title="Звуки">🔊</button>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank" class="btn-tg">💬 Telegram</a>
+                <button class="burger" id="burger"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <main class="profile-main">
+        <div class="container">
+
+            <!-- Селектор игрока -->
+            <div class="player-selector">
+                <h2 class="section-title">👤 Профили игроков</h2>
+                <p class="section-sub">Выбери игрока, чтобы открыть его профиль</p>
+                <div class="player-mini-grid" id="player-mini-grid"></div>
+            </div>
+
+            <!-- МЕСТО ПОД ПРОФИЛЬ -->
+            <div class="profile-wrapper" id="profile-wrapper" style="display:none;">
+
+                <!-- HERO-CARD ПРОФИЛЯ -->
+                <div class="profile-hero" id="profile-hero"></div>
+
+                <!-- ВКЛАДКИ -->
+                <div class="profile-tabs">
+                    <button class="tab-btn active" data-tab="overview">🎮 Обзор</button>
+                    <button class="tab-btn" data-tab="stats">📊 Статистика</button>
+                    <button class="tab-btn" data-tab="achievements">🏆 Достижения</button>
+                    <button class="tab-btn" data-tab="history">📈 История</button>
+                    <button class="tab-btn" data-tab="rewards">🎁 Награды</button>
+                </div>
+
+                <!-- КОНТЕНТ ВКЛАДОК -->
+                <div class="profile-content">
+                    <div class="tab-content active" id="tab-overview"></div>
+                    <div class="tab-content" id="tab-stats"></div>
+                    <div class="tab-content" id="tab-achievements"></div>
+                    <div class="tab-content" id="tab-history"></div>
+                    <div class="tab-content" id="tab-rewards"></div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Логотип">
+                <span>нагибаторы3000</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">← На главную</a>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank">💬 Telegram</a>
+            </div>
+            <p class="footer-copy">© 2026 нагибаторы3000</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="profiles.js"></script>
+</body>
+</html>
