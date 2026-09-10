@@ -1,0 +1,284 @@
+/* ============================================================
+   ACHIEVEMENT-UPGRADE.CSS — Inventory стиль достижений
+   ============================================================ */
+
+/* ==================== АНИМИРОВАННЫЙ ГЛОУ У КАРТОЧЕК ==================== */
+.ach-page-card {
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s,
+                filter 0.3s;
+    will-change: transform;
+}
+
+.ach-page-card::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 20px;
+    background: conic-gradient(
+        from var(--angle, 0deg),
+        transparent 0%,
+        rgba(255, 210, 63, 0.3) 25%,
+        transparent 50%
+    );
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+    z-index: 0;
+    animation: rotateAngle 4s linear infinite;
+}
+
+@keyframes rotateAngle {
+    to { --angle: 360deg; }
+}
+
+.ach-page-card:hover::after {
+    opacity: 1;
+}
+
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+/* ==================== ICON ANIMATION ==================== */
+.ach-page-icon {
+    display: inline-block;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+                filter 0.3s;
+    transform-origin: center;
+}
+
+.ach-page-card:hover .ach-page-icon {
+    transform: scale(1.25) rotate(-10deg);
+    filter: drop-shadow(0 0 25px rgba(255, 210, 63, 0.9));
+}
+
+/* Пульсация для разблокированных legendary */
+.ach-page-card.legendary:not(.locked) .ach-page-icon {
+    animation: legendaryIconPulse 3s ease-in-out infinite;
+}
+
+@keyframes legendaryIconPulse {
+    0%, 100% { 
+        filter: drop-shadow(0 0 15px rgba(255, 210, 63, 0.6));
+    }
+    50% { 
+        filter: drop-shadow(0 0 35px rgba(255, 210, 63, 1));
+    }
+}
+
+/* ==================== RARITY BADGE — КРАСИВЕЕ ==================== */
+.ach-page-rarity {
+    position: relative;
+    overflow: hidden;
+}
+
+.ach-page-rarity::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.4), 
+        transparent);
+    animation: rarityShine 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes rarityShine {
+    0% { left: -100%; }
+    50%, 100% { left: 100%; }
+}
+
+/* ==================== ПРОГРЕСС БАР — БЛЕСК ==================== */
+.ach-page-progress-fill {
+    position: relative;
+    overflow: hidden;
+}
+
+.ach-page-progress-fill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.5), 
+        transparent);
+    animation: progressShineAch 2s infinite;
+}
+
+@keyframes progressShineAch {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* ==================== COUNTER В ШАПКЕ ==================== */
+.hero-stats .stat-value {
+    font-variant-numeric: tabular-nums;
+}
+
+/* ==================== ФИЛЬТРЫ — СТИЛЬ ИГРЫ ==================== */
+.filter-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 210, 63, 0.2), 
+        transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.filter-btn:hover::before,
+.filter-btn.active::before {
+    opacity: 1;
+}
+
+.filter-btn:active {
+    transform: scale(0.96);
+}
+
+/* ==================== МОДАЛКА — БОЛЬШЕ ЭФФЕКТА ==================== */
+.ach-modal-content {
+    position: relative;
+    overflow: hidden;
+}
+
+.ach-modal-content::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(255, 210, 63, 0.15),
+        transparent 50%
+    );
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.ach-modal-content:hover::after {
+    opacity: 1;
+}
+
+/* ==================== TOOLTIP НА КАРТОЧКАХ ==================== */
+.ach-page-card {
+    cursor: pointer;
+}
+
+.ach-page-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background: rgba(11, 18, 48, 0.98);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 210, 63, 0.4);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-size: 0.75rem;
+    color: #fff;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.ach-page-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: rgba(255, 210, 63, 0.4);
+}
+
+.ach-page-card:hover .ach-page-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+/* ==================== EMPTY STATE В СЕТКЕ ==================== */
+.ach-empty {
+    grid-column: 1 / -1;
+    padding: 80px 20px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.ach-empty-icon {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 20px;
+    opacity: 0.3;
+    animation: emptyFloatAch 4s ease-in-out infinite;
+}
+
+@keyframes emptyFloatAch {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.ach-empty-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.3rem;
+    color: #FFD23F;
+    margin-bottom: 10px;
+}
+
+/* ==================== РЕДКОСТЬ — СВЕЧЕНИЕ КАРТОЧЕК ==================== */
+.ach-page-card.common:not(.locked) {
+    box-shadow: 0 0 20px rgba(149, 165, 166, 0.15);
+}
+
+.ach-page-card.rare:not(.locked) {
+    box-shadow: 0 0 25px rgba(52, 152, 219, 0.25);
+}
+
+.ach-page-card.epic:not(.locked) {
+    box-shadow: 0 0 30px rgba(155, 89, 182, 0.3);
+}
+
+.ach-page-card.legendary:not(.locked) {
+    box-shadow: 0 0 40px rgba(255, 210, 63, 0.4);
+}
+
+/* ==================== АДАПТИВ ==================== */
+@media (max-width: 768px) {
+    .ach-page-tooltip {
+        display: none;
+    }
+    
+    .ach-page-card::after {
+        animation: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ach-page-card::after,
+    .ach-page-rarity::before,
+    .ach-page-progress-fill::after,
+    .ach-page-icon,
+    .ach-empty-icon,
+    .legendaryIconPulse {
+        animation: none !important;
+    }
+}

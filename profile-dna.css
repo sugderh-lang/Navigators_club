@@ -1,0 +1,352 @@
+/* ============================================================
+   PROFILE-DNA.CSS — Player Radar Chart + Archetypes
+   ============================================================ */
+
+/* ==================== PLAYER DNA PANEL ==================== */
+.dna-panel {
+    background: rgba(16, 26, 61, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 210, 63, 0.25);
+    border-radius: 22px;
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(255, 210, 63, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.dna-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #FFD23F, transparent);
+    opacity: 0.6;
+}
+
+.dna-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.dna-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.15rem;
+    color: #FFD23F;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dna-title-icon {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 12px rgba(255, 210, 63, 0.7));
+    animation: dnaIconPulse 3s ease-in-out infinite;
+}
+
+@keyframes dnaIconPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.dna-archetype-badge {
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #FFD23F, #FFB000);
+    color: #0B1230;
+    box-shadow: 0 0 25px rgba(255, 210, 63, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: archetypeBadge 2s ease-in-out infinite;
+}
+
+@keyframes archetypeBadge {
+    0%, 100% { box-shadow: 0 0 25px rgba(255, 210, 63, 0.5); }
+    50% { box-shadow: 0 0 40px rgba(255, 210, 63, 0.9); }
+}
+
+.dna-archetype-icon {
+    font-size: 1.2rem;
+}
+
+/* ==================== DNA GRID ==================== */
+.dna-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .dna-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* ==================== RADAR CHART ==================== */
+.dna-radar-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 320px;
+}
+
+.dna-radar {
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    filter: drop-shadow(0 0 30px rgba(255, 210, 63, 0.15));
+}
+
+/* Полигон игрока */
+.dna-radar-polygon {
+    fill: rgba(255, 210, 63, 0.25);
+    stroke: #FFD23F;
+    stroke-width: 2.5;
+    filter: drop-shadow(0 0 15px rgba(255, 210, 63, 0.7));
+    animation: dnaPolygonIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    transform-origin: center;
+}
+
+@keyframes dnaPolygonIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Точки на полигоне */
+.dna-radar-point {
+    fill: #FFD23F;
+    stroke: #fff;
+    stroke-width: 1.5;
+    filter: drop-shadow(0 0 8px rgba(255, 210, 63, 1));
+    transition: r 0.3s;
+}
+
+.dna-radar-point:hover {
+    r: 6;
+}
+
+/* Сетка */
+.dna-radar-grid {
+    fill: none;
+    stroke: rgba(255, 210, 63, 0.15);
+    stroke-width: 1;
+}
+
+.dna-radar-axis {
+    stroke: rgba(255, 210, 63, 0.2);
+    stroke-width: 1;
+}
+
+.dna-radar-label {
+    font-family: 'Russo One', sans-serif;
+    font-size: 10px;
+    fill: rgba(255, 210, 63, 0.8);
+    text-anchor: middle;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* ==================== DNA STATS LIST ==================== */
+.dna-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.dna-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dna-stat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+.dna-stat-name {
+    font-family: 'Russo One', sans-serif;
+    color: #FFD23F;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dna-stat-name-icon {
+    font-size: 1rem;
+}
+
+.dna-stat-value {
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.95rem;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+}
+
+.dna-stat-track {
+    height: 8px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.dna-stat-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #FFB000, #FFD23F);
+    box-shadow: 0 0 12px rgba(255, 210, 63, 0.6);
+    width: 0;
+    transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+
+.dna-stat-fill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: dnaStatShimmer 2.5s infinite;
+}
+
+@keyframes dnaStatShimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.dna-stat-fill.aggression { background: linear-gradient(90deg, #FF4D8D, #EB4D4B); }
+.dna-stat-fill.reaction { background: linear-gradient(90deg, #22D3EE, #3498DB); }
+.dna-stat-fill.teamplay { background: linear-gradient(90deg, #7B5CFF, #A29BFE); }
+.dna-stat-fill.consistency { background: linear-gradient(90deg, #6AB04C, #2ECC71); }
+.dna-stat-fill.activity { background: linear-gradient(90deg, #FFB000, #FFD23F); }
+.dna-stat-fill.tactics { background: linear-gradient(90deg, #9B59B6, #7B5CFF); }
+
+/* ==================== ARCHETYPE CARD ==================== */
+.archetype-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 24px;
+    background: linear-gradient(135deg, 
+        rgba(255, 210, 63, 0.12), 
+        rgba(123, 92, 255, 0.08));
+    border: 2px solid rgba(255, 210, 63, 0.3);
+    border-radius: 18px;
+    margin-top: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+.archetype-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 0% 50%, rgba(255, 210, 63, 0.15), transparent 60%);
+    pointer-events: none;
+}
+
+.archetype-icon-big {
+    font-size: 3rem;
+    filter: drop-shadow(0 0 20px rgba(255, 210, 63, 0.6));
+    flex-shrink: 0;
+    animation: archetypeFloat 3s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes archetypeFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+.archetype-info {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    min-width: 0;
+}
+
+.archetype-name {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.3rem;
+    color: #FFD23F;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.archetype-desc {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.5;
+}
+
+/* ==================== MODAL IN PROFILE ==================== */
+.profile-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+}
+
+.profile-tabs .tab-btn {
+    flex-shrink: 0;
+}
+
+/* ==================== АДАПТИВ ==================== */
+@media (max-width: 600px) {
+    .dna-panel {
+        padding: 20px 16px;
+    }
+    .dna-radar {
+        max-width: 260px;
+    }
+    .dna-radar-label {
+        font-size: 9px;
+    }
+    .archetype-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 18px;
+    }
+    .archetype-icon-big {
+        font-size: 2.5rem;
+    }
+}
+
+/* ==================== REDUCED MOTION ==================== */
+@media (prefers-reduced-motion: reduce) {
+    .dna-radar-polygon,
+    .dna-stat-fill,
+    .archetype-icon-big,
+    .dna-title-icon,
+    .dna-archetype-badge {
+        animation: none !important;
+        transition: none !important;
+    }
+}

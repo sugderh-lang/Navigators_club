@@ -3,94 +3,70 @@ const RANKS = [
     {
         id: "member",
         level: 1,
-        emoji: "⚔️",
+        emblem: "images/ranks/novice.png",
         name: "Участник",
         rarity: "common",
         color: "#7f8c8d",
-        description: "Базовое звание клуба. Ты — часть команды, но ещё не доказал свою преданность.",
-        requirements: [
-            "Вступить в клуб",
-            "Иметь 25 000+ кубков",
-            "Играть хотя бы раз в неделю"
-        ],
+        description: "Базовое звание клуба. Ты — часть команды, но ещё не доказал преданность.",
+        requirements: ["Вступить в клуб", "Иметь 25 000+ кубков", "Играть хотя бы раз в неделю"],
         reward: "Доступ к клубным войнам"
     },
     {
         id: "veteran",
         level: 2,
-        emoji: "🛡️",
+        emblem: "images/ranks/veteran.png",
         name: "Ветеран",
         rarity: "rare",
         color: "#e67e22",
-        description: "Опытный боец, который доказал свою преданность клубу. Пример для новичков.",
-        requirements: [
-            "14 билетов на неделе лиги",
-            "Все клубные квесты выполнены",
-            "Повышение за 3 дня до конца недели",
-            "Уважение к участникам"
-        ],
+        description: "Опытный боец, который доказал свою преданность клубу.",
+        requirements: ["14 билетов на неделе лиги", "Все клубные квесты", "Активность 3+ дня в неделю"],
         reward: "Значок 🛡️ + приоритет в составе"
     },
     {
         id: "elite",
         level: 3,
-        emoji: "💎",
+        emblem: "images/ranks/elite.png",
         name: "Элита",
         rarity: "epic",
         color: "#f9ca24",
-        description: "Ветеран, который вступил в Telegram-чат клуба. Ядро клуба — те, кто в самом сердце.",
-        requirements: [
-            "Быть в звании Ветерана",
-            "Вступить в Telegram-чат клуба",
-            "Написать свой игровой ник в чате",
-            "Активно участвовать в жизни клуба"
-        ],
+        description: "Ветеран, который вступил в Telegram-чат клуба. Ядро клуба.",
+        requirements: ["Звание Ветерана", "Вступить в Telegram-чат", "Написать свой игровой ник"],
         reward: "Значок 💎 + доступ к закрытому штабу"
     },
     {
         id: "vice",
         level: 4,
-        emoji: "🎩",
+        emblem: "images/ranks/king.png",
         name: "Пане президент",
         rarity: "legendary",
         color: "#a29bfe",
-        description: "Заместитель президента. Помогает управлять клубом, принимает решения.",
-        requirements: [
-            "Быть в Элите",
-            "Показать лидерские качества",
-            "Назначение президентом клуба",
-            "Стабильная активность 6+ месяцев"
-        ],
+        description: "Заместитель президента. Помогает управлять клубом.",
+        requirements: ["Быть в Элите", "Лидерские качества", "Назначение президентом", "6+ месяцев активности"],
         reward: "Значок 🎩 + права модератора"
     },
     {
         id: "president",
         level: 5,
-        emoji: "👑",
+        emblem: "images/ranks/president.png",
         name: "Президент",
         rarity: "mythic",
         color: "#ff4757",
-        description: "Глава клуба. Основатель, лидер, легенда. Тот, кто ведёт команду к победам.",
-        requirements: [
-            "Основать клуб",
-            "ИЛИ получить клуб от прошлого президента",
-            "Управлять клубом 1+ год",
-            "Быть примером для всех"
-        ],
+        description: "Глава клуба. Основатель, лидер, легенда.",
+        requirements: ["Основать клуб", "ИЛИ получить от прошлого президента", "Управлять 1+ год"],
         reward: "Корона 👑 + полные права"
     }
 ];
 
-/* ==================== МОЙ ПРОФИЛЬ (КЕФУКА) ==================== */
+/* ==================== МОЙ ПРОФИЛЬ ==================== */
 const MY_PROFILE = {
     nick: "КЕФУКА",
     tgNick: "Гудвин",
-    currentRank: "elite", // КЕФУКА — элита (в чате) + ветеран
+    currentRank: "elite",
     trophies: 76553,
-    progressToNext: 65 // 65% до Пане президента (условно)
+    progressToNext: 65
 };
 
-/* ==================== ЛЕСТНИЦА ЗВАНИЙ ==================== */
+/* ==================== ЛЕСТНИЦА ==================== */
 function renderLadder() {
     const el = document.getElementById('ranks-ladder');
     if (!el) return;
@@ -100,12 +76,12 @@ function renderLadder() {
         return `
             <div class="rank-step rank-${r.id}" data-level="${r.level}" data-rank-id="${r.id}">
                 <div class="rank-step-inner">
-                    <span class="rank-step-emoji">${r.emoji}</span>
+                    <img src="${r.emblem}" alt="${r.name}" class="rank-step-emblem" onerror="this.style.display='none'">
                     <div class="rank-step-name">${r.name}</div>
                     <div class="rank-step-count">${count} чел.</div>
                 </div>
                 <div class="rank-step-tooltip">
-                    <div class="rank-tooltip-title">${r.emoji} ${r.name}</div>
+                    <div class="rank-tooltip-title">${r.name}</div>
                     <ul class="rank-tooltip-list">
                         ${r.requirements.map(req => `<li>${req}</li>`).join('')}
                     </ul>
@@ -118,7 +94,6 @@ function renderLadder() {
 /* ==================== ПОДСЧЁТ ИГРОКОВ ==================== */
 function countPlayersInRank(rankId) {
     if (typeof players === 'undefined') return 0;
-
     return players.filter(p => {
         if (rankId === 'president') return p.role === 'Президент';
         if (rankId === 'vice') return p.role === 'Пане президент';
@@ -145,13 +120,11 @@ function renderMyRank() {
                 <div class="my-rank-tg">Telegram: ${MY_PROFILE.tgNick}</div>
             </div>
         </div>
-
         <div class="my-rank-current">
-            <span class="my-rank-emoji">${currentRank.emoji}</span>
+            <img src="${currentRank.emblem}" alt="${currentRank.name}" class="my-rank-emblem" onerror="this.style.display='none'">
             <div class="my-rank-label">Текущее звание</div>
             <div class="my-rank-name">${currentRank.name}</div>
         </div>
-
         ${nextRank ? `
             <div class="my-rank-progress">
                 <div class="my-rank-progress-label">
@@ -161,25 +134,18 @@ function renderMyRank() {
                 <div class="my-rank-progress-track">
                     <div class="my-rank-progress-fill" id="my-rank-fill"></div>
                 </div>
-                <div class="my-rank-next">
-                    Осталось: <strong>35%</strong> прогресса
-                </div>
+                <div class="my-rank-next">Осталось: <strong>${100 - MY_PROFILE.progressToNext}%</strong></div>
             </div>
-        ` : `
-            <div class="my-rank-next" style="margin-top:20px;">
-                🎉 <strong>Максимальное звание достигнуто!</strong>
-            </div>
-        `}
+        ` : `<div class="my-rank-next" style="margin-top:20px;">🎉 Максимальное звание!</div>`}
     `;
 
-    // Анимация заполнения
     setTimeout(() => {
         const fill = document.getElementById('my-rank-fill');
         if (fill) fill.style.width = MY_PROFILE.progressToNext + '%';
     }, 300);
 }
 
-/* ==================== ПОДРОБНО О ЗВАНИЯХ ==================== */
+/* ==================== ПОДРОБНО ==================== */
 function renderDetailed() {
     const el = document.getElementById('ranks-detailed');
     if (!el) return;
@@ -187,7 +153,7 @@ function renderDetailed() {
     el.innerHTML = RANKS.slice().reverse().map(r => `
         <div class="rank-detail-card rank-${r.id}">
             <div class="rank-detail-header">
-                <span class="rank-detail-emoji" style="color: ${r.color};">${r.emoji}</span>
+                <img src="${r.emblem}" alt="${r.name}" class="rank-detail-emblem" onerror="this.style.display='none'">
                 <div>
                     <div class="rank-detail-name">${r.name}</div>
                 </div>
@@ -211,7 +177,7 @@ function renderDetailed() {
     `).join('');
 }
 
-/* ==================== УЧАСТНИКИ ПО ЗВАНИЯМ ==================== */
+/* ==================== УЧАСТНИКИ ==================== */
 function renderMembersByRank() {
     const el = document.getElementById('ranks-members');
     if (!el || typeof players === 'undefined') return;
@@ -225,14 +191,13 @@ function renderMembersByRank() {
             if (r.id === 'member') return !p.isVeteran && !p.inChat;
             return false;
         }).sort((a, b) => b.trophies - a.trophies);
-
         return { rank: r, members };
     });
 
     el.innerHTML = groups.map(g => `
         <div class="rank-members-group">
             <h3>
-                <span style="font-size:1.5rem;">${g.rank.emoji}</span>
+                <img src="${g.rank.emblem}" alt="${g.rank.name}" style="width:40px;height:40px;object-fit:contain;" onerror="this.style.display='none'">
                 ${g.rank.name}
                 <span style="margin-left:auto; color:var(--text-dim); font-size:0.8rem;">${g.members.length}</span>
             </h3>
@@ -241,9 +206,7 @@ function renderMembersByRank() {
                     <div class="rank-member-item">
                         <div class="rank-member-item-avatar">${m.nick[0].toUpperCase()}</div>
                         <span>${m.nick}</span>
-                        <span style="margin-left:auto; color:var(--gold); font-size:0.8rem;">
-                            ${m.trophies.toLocaleString('ru-RU')} 🏆
-                        </span>
+                        <span style="margin-left:auto; color:var(--gold); font-size:0.8rem;">${m.trophies.toLocaleString('ru-RU')} 🏆</span>
                     </div>
                 `).join('') : '<p style="color:var(--text-dim); text-align:center; font-size:0.85rem;">—</p>'}
             </div>
@@ -262,11 +225,10 @@ function showRankUp(rankId) {
     const subtitleEl = document.getElementById('rankup-subtitle');
     const particlesEl = document.getElementById('rankup-particles');
 
-    iconEl.textContent = rank.emoji;
+    iconEl.innerHTML = `<img src="${rank.emblem}" style="width:100%;height:100%;object-fit:contain;" onerror="this.style.display='none'">`;
     rankEl.textContent = rank.name;
     subtitleEl.textContent = `Ты получил звание «${rank.name}»`;
 
-    // Создаём частицы
     particlesEl.innerHTML = '';
     for (let i = 0; i < 30; i++) {
         const p = document.createElement('div');
@@ -302,13 +264,10 @@ document.addEventListener('DOMContentLoaded', () => {
     renderDetailed();
     renderMembersByRank();
 
-    // Демо: клик по любой карточке звания → показать анимацию повышения
-    // (в реальном приложении вызывается при фактическом повышении)
+    // Двойной клик → анимация повышения (демо)
     setTimeout(() => {
         document.querySelectorAll('.rank-step').forEach(step => {
-            step.addEventListener('dblclick', () => {
-                showRankUp(step.dataset.rankId);
-            });
+            step.addEventListener('dblclick', () => showRankUp(step.dataset.rankId));
         });
     }, 500);
 });

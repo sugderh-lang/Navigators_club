@@ -1,0 +1,437 @@
+/* ============================================================
+   UPGRADE2.CSS — Дополнительные премиум-эффекты
+   Подключается ПОСЛЕ upgrade.css
+   ============================================================ */
+
+/* ==================== ЖИВОЙ ФОН С ЧАСТИЦАМИ ==================== */
+.bg-layer .bg-particles::before,
+.bg-layer .bg-particles::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20% 30%, rgba(249, 202, 36, 0.8), transparent),
+        radial-gradient(2px 2px at 60% 70%, rgba(235, 77, 75, 0.6), transparent),
+        radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(1px 1px at 80% 10%, rgba(249, 202, 36, 0.7), transparent),
+        radial-gradient(2px 2px at 90% 60%, rgba(155, 89, 182, 0.6), transparent),
+        radial-gradient(1px 1px at 33% 80%, rgba(255, 255, 255, 0.4), transparent),
+        radial-gradient(1px 1px at 10% 70%, rgba(249, 202, 36, 0.6), transparent);
+    background-size: 200% 200%;
+    animation: bgParticlesMove 30s linear infinite;
+    pointer-events: none;
+}
+
+.bg-layer .bg-particles::after {
+    background-size: 150% 150%;
+    animation-duration: 45s;
+    animation-direction: reverse;
+    opacity: 0.6;
+}
+
+@keyframes bgParticlesMove {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 200%; }
+}
+
+/* ==================== ЗОЛОТАЯ АУРА ВОКРУГ САЙТА ==================== */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9998;
+    background: 
+        radial-gradient(circle at 0% 0%, rgba(249, 202, 36, 0.06), transparent 40%),
+        radial-gradient(circle at 100% 100%, rgba(235, 77, 75, 0.06), transparent 40%);
+}
+
+/* ==================== HERO — БОЛЬШЕ ГЛУБИНЫ ==================== */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(ellipse at 50% 0%, rgba(249, 202, 36, 0.15), transparent 60%),
+        radial-gradient(ellipse at 50% 100%, rgba(155, 89, 182, 0.1), transparent 60%);
+    pointer-events: none;
+    animation: heroAura 6s ease-in-out infinite;
+}
+
+@keyframes heroAura {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* Плавающие черепа усиливаем */
+.hero-skull {
+    opacity: 0.15 !important;
+    font-size: 5rem !important;
+    filter: drop-shadow(0 0 30px rgba(249, 202, 36, 0.5)) !important;
+    animation: heroSkullFloat 15s ease-in-out infinite !important;
+}
+
+.hero-skull-1 { animation-delay: 0s !important; }
+.hero-skull-2 { animation-delay: 3s !important; font-size: 4rem !important; }
+.hero-skull-3 { animation-delay: 6s !important; }
+
+@keyframes heroSkullFloat {
+    0%, 100% { 
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 0.15;
+    }
+    25% { 
+        transform: translate(20px, -30px) rotate(10deg) scale(1.1);
+        opacity: 0.2;
+    }
+    50% { 
+        transform: translate(-15px, -50px) rotate(-10deg) scale(0.95);
+        opacity: 0.25;
+    }
+    75% { 
+        transform: translate(30px, -20px) rotate(5deg) scale(1.05);
+        opacity: 0.18;
+    }
+}
+
+/* ==================== ЗОЛОТОЙ БЛИК НА HERO-ЗАГОЛОВКЕ ==================== */
+.hero-title {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-title::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.4) 50%, 
+        transparent 100%);
+    animation: heroTitleShine 5s ease-in-out infinite;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+}
+
+@keyframes heroTitleShine {
+    0%, 100% { left: -150%; }
+    50% { left: 150%; }
+}
+
+/* ==================== КНОПКА "ВСТУПИТЬ" — ПУЛЬС + СВЕЧЕНИЕ ==================== */
+.btn-hero {
+    position: relative;
+    overflow: visible !important;
+}
+
+.btn-hero::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    background: linear-gradient(45deg, 
+        var(--gold), 
+        var(--gold-light), 
+        var(--gold-dark), 
+        var(--gold));
+    background-size: 300% 300%;
+    z-index: -1;
+    animation: gradientRotate 3s linear infinite;
+    opacity: 0.6;
+    filter: blur(8px);
+}
+
+@keyframes gradientRotate {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+}
+
+/* ==================== КАРТОЧКИ — 3D ПРИ HOVER ==================== */
+.elite-card,
+.player-card,
+.shop-card,
+.badge-card,
+.hall-card,
+.guide-card {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.elite-card:hover,
+.player-card:hover,
+.shop-card:hover,
+.badge-card:hover,
+.hall-card:hover,
+.guide-card:hover {
+    transform: translateY(-8px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;
+}
+
+/* ==================== ЗОЛОТЫЕ ЧАСТИЦЫ ПРИ HOVER НА КНОПКАХ ==================== */
+.btn-gold:hover,
+.btn-hero:hover {
+    position: relative;
+    overflow: visible !important;
+}
+
+.btn-gold:hover::before,
+.btn-hero:hover::before {
+    content: '✨';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    font-size: 1.5rem;
+    animation: sparkle1 1s infinite;
+    pointer-events: none;
+}
+
+.btn-gold:hover::after,
+.btn-hero:hover::after {
+    content: '✨';
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    font-size: 1.5rem;
+    animation: sparkle2 1s infinite;
+    pointer-events: none;
+}
+
+@keyframes sparkle1 {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes sparkle2 {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0; transform: scale(0.5); }
+}
+
+/* ==================== РАЗДЕЛИТЕЛИ СЕКЦИЙ ==================== */
+.section {
+    position: relative;
+}
+
+.section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(249, 202, 36, 0.4), 
+        transparent);
+    pointer-events: none;
+}
+
+.section:last-of-type::after {
+    display: none;
+}
+
+/* ==================== STAT-CARD — ЛЕВИТАЦИЯ ==================== */
+.hero-stats .stat-card {
+    position: relative;
+    animation: statCardFloat 4s ease-in-out infinite;
+}
+
+.hero-stats .stat-card:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.hero-stats .stat-card:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes statCardFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+/* ==================== PODIUM — БЛЕСК НА КОРОНАХ ==================== */
+.podium-crown {
+    position: relative;
+    display: inline-block;
+}
+
+.podium-crown::after {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    background: radial-gradient(circle, rgba(249, 202, 36, 0.6), transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+    animation: podiumCrownGlow 2s ease-in-out infinite;
+}
+
+@keyframes podiumCrownGlow {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* ==================== PLAYER CARD — РАНГ #1 С КОРОНОЙ ==================== */
+.player-rank-badge.rank-1 {
+    position: relative;
+}
+
+.player-rank-badge.rank-1::after {
+    content: '👑';
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.3rem;
+    animation: rank1CrownBounce 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(249, 202, 36, 0.9));
+}
+
+@keyframes rank1CrownBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0) rotate(-5deg); }
+    50% { transform: translateX(-50%) translateY(-4px) rotate(5deg); }
+}
+
+/* ==================== ВЕРХНЯЯ ПОЛОСКА У КАРТОЧЕК ==================== */
+.player-card::after,
+.elite-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        var(--gold), 
+        transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+    transform-origin: center;
+}
+
+.player-card:hover::after,
+.elite-card:hover::after {
+    transform: scaleX(1);
+}
+
+/* ==================== ПОДВАЛ — ЗОЛОТАЯ ЛИНИЯ ==================== */
+.footer-inner {
+    position: relative;
+}
+
+.footer-inner::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: var(--gold);
+    box-shadow: 0 0 20px var(--gold);
+}
+
+/* ==================== СКРОЛЛ-ПРОГРЕСС (полоса сверху) ==================== */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--gold), var(--pink), var(--gold));
+    z-index: 99999;
+    box-shadow: 0 0 15px rgba(249, 202, 36, 0.8);
+    pointer-events: none;
+    /* JS обновит width при скролле */
+}
+
+/* ==================== ПЛАВНОЕ ПОЯВЛЕНИЕ ПРИ ЗАГРУЗКЕ ==================== */
+@keyframes fadeInBody {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+body {
+    animation: fadeInBody 0.6s ease-out;
+}
+
+/* ==================== КУРСОР НА КАРТОЧКАХ ==================== */
+.player-card,
+.elite-card,
+.meme-card,
+.shop-card,
+.guide-card,
+.ach-page-card,
+.hall-card {
+    cursor: pointer;
+}
+
+/* ==================== ЗВЁЗДОЧКИ В ЗАГОЛОВКАХ ==================== */
+.section-title::before {
+    content: '✦ ';
+    color: var(--gold);
+    margin-right: 5px;
+    animation: starTwinkle 2s ease-in-out infinite;
+}
+
+.section-title::after {
+    content: ' ✦';
+    color: var(--gold);
+    margin-left: 5px;
+    animation: starTwinkle 2s ease-in-out infinite 0.5s;
+}
+
+@keyframes starTwinkle {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* ==================== АДАПТИВ ==================== */
+@media (max-width: 768px) {
+    .hero-skull {
+        font-size: 3rem !important;
+        opacity: 0.1 !important;
+    }
+    
+    .btn-hero::before {
+        animation: none;
+        opacity: 0.3;
+    }
+    
+    .hero-title::after {
+        display: none;
+    }
+    
+    .elite-card:hover,
+    .player-card:hover {
+        transform: translateY(-4px) !important;
+    }
+    
+    .section::after {
+        width: 100px;
+    }
+}
+
+/* ==================== REDUCED MOTION ==================== */
+@media (prefers-reduced-motion: reduce) {
+    .bg-layer .bg-particles::before,
+    .bg-layer .bg-particles::after,
+    .hero::before,
+    .hero-skull,
+    .hero-title::after,
+    .statCardFloat,
+    .podium-crown::after,
+    .rank1CrownBounce,
+    .starTwinkle {
+        animation: none !important;
+    }
+}

@@ -1,0 +1,549 @@
+/* ============================================================
+   UPGRADE.CSS — Премиальное оформление сайта
+   Подключается ПОСЛЕ style.css, дополняет, не ломает
+   ============================================================ */
+
+/* ==================== ГЛОБАЛЬНЫЕ УЛУЧШЕНИЯ ==================== */
+:root {
+    --neon-gold: 0 0 20px rgba(249, 202, 36, 0.6), 0 0 60px rgba(249, 202, 36, 0.3);
+    --neon-pink: 0 0 20px rgba(235, 77, 75, 0.6), 0 0 60px rgba(235, 77, 75, 0.3);
+    --neon-purple: 0 0 20px rgba(155, 89, 182, 0.6), 0 0 60px rgba(155, 89, 182, 0.3);
+    --glass-blur: blur(20px) saturate(180%);
+    --depth-1: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --depth-2: 0 8px 24px rgba(0, 0, 0, 0.4);
+    --depth-3: 0 16px 48px rgba(0, 0, 0, 0.5);
+    --depth-4: 0 24px 72px rgba(0, 0, 0, 0.6);
+}
+
+/* ==================== УЛУЧШЕННЫЙ ФОН ==================== */
+body {
+    background: 
+        radial-gradient(ellipse at 20% 0%, rgba(108, 92, 231, 0.15), transparent 50%),
+        radial-gradient(ellipse at 80% 100%, rgba(235, 77, 75, 0.1), transparent 50%),
+        linear-gradient(135deg, #0a0e27 0%, #141a3d 50%, #0a0e27 100%);
+    background-attachment: fixed;
+}
+
+/* Шум для глубины */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+}
+
+/* ==================== ШАПКА — БОЛЕЕ ИГРОВАЯ ==================== */
+.header {
+    background: rgba(10, 14, 39, 0.85) !important;
+    backdrop-filter: var(--glass-blur) !important;
+    -webkit-backdrop-filter: var(--glass-blur) !important;
+    border-bottom: 1px solid rgba(249, 202, 36, 0.2) !important;
+}
+
+/* Золотая линия сверху */
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--gold) 30%, 
+        #fff 50%, 
+        var(--gold) 70%, 
+        transparent 100%);
+    opacity: 0.6;
+    animation: headerGlow 4s ease-in-out infinite;
+}
+
+@keyframes headerGlow {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.9; }
+}
+
+/* Логотип в шапке — свечение */
+.logo-img {
+    filter: drop-shadow(0 0 12px rgba(249, 202, 36, 0.7)) !important;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.logo:hover .logo-img {
+    transform: scale(1.1) rotate(-5deg);
+    filter: drop-shadow(0 0 25px rgba(249, 202, 36, 1)) !important;
+}
+
+/* Навигация — активные ссылки */
+.nav a {
+    position: relative;
+    padding: 6px 10px;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.nav a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: all 0.3s;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px var(--gold);
+}
+
+.nav a:hover::before,
+.nav a.active::before {
+    width: 80%;
+}
+
+.nav a:hover,
+.nav a.active {
+    color: var(--gold) !important;
+    background: rgba(249, 202, 36, 0.05);
+}
+
+/* ==================== КНОПКИ — 3D-ЭФФЕКТ ==================== */
+.btn,
+.btn-hero,
+.btn-gold,
+.btn-outline,
+.filter-btn,
+.tab-btn {
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn:hover,
+.btn-hero:hover,
+.btn-gold:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+        0 12px 30px rgba(0, 0, 0, 0.4),
+        0 0 25px rgba(249, 202, 36, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn:active,
+.btn-hero:active,
+.btn-gold:active {
+    transform: translateY(0) scale(0.98);
+    transition: all 0.1s;
+}
+
+/* Shine-эффект при hover */
+.btn-gold::after,
+.btn-hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.5), 
+        transparent);
+    transition: left 0.7s;
+    pointer-events: none;
+}
+
+.btn-gold:hover::after,
+.btn-hero:hover::after {
+    left: 100%;
+}
+
+/* ==================== КАРТОЧКИ — СТЕКЛО И ГЛУБИНА ==================== */
+.panel,
+.elite-card,
+.hall-card,
+.cal-card,
+.value-card,
+.guide-card,
+.shop-card,
+.badge-card,
+.player-card,
+.minigame-card,
+.achievement-card,
+.rank-detail-card,
+.rank-members-group,
+.live-stat-card,
+.activity-item {
+    background: rgba(20, 26, 61, 0.6) !important;
+    backdrop-filter: var(--glass-blur) !important;
+    -webkit-backdrop-filter: var(--glass-blur) !important;
+    border: 1px solid rgba(249, 202, 36, 0.15) !important;
+    box-shadow: var(--depth-2) !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Световая полоска сверху карточки */
+.panel::before,
+.player-card::before,
+.guide-card::before,
+.shop-card::before,
+.achievement-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(249, 202, 36, 0.8), 
+        transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+}
+
+.panel:hover::before,
+.player-card:hover::before,
+.guide-card:hover::before,
+.shop-card:hover::before,
+.achievement-card:hover::before {
+    opacity: 1;
+}
+
+/* Hover карточек */
+.panel:hover,
+.elite-card:hover,
+.hall-card:hover,
+.cal-card:hover,
+.value-card:hover,
+.guide-card:hover,
+.shop-card:hover,
+.badge-card:hover,
+.player-card:hover,
+.achievement-card:hover,
+.rank-detail-card:hover,
+.live-stat-card:hover {
+    transform: translateY(-6px) scale(1.01) !important;
+    border-color: rgba(249, 202, 36, 0.4) !important;
+    box-shadow: 
+        var(--depth-3),
+        0 0 40px rgba(249, 202, 36, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+/* ==================== ЗАГОЛОВКИ СЕКЦИЙ ==================== */
+.section-title {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    background: linear-gradient(180deg, #fff 0%, var(--gold) 50%, var(--gold-dark) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 20px rgba(249, 202, 36, 0.5));
+    letter-spacing: 3px;
+    animation: titleGlow 4s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+    0%, 100% { filter: drop-shadow(0 0 20px rgba(249, 202, 36, 0.5)); }
+    50% { filter: drop-shadow(0 0 40px rgba(249, 202, 36, 0.9)); }
+}
+
+/* Декоративные линии вокруг заголовка */
+.section-title::before,
+.section-title::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: translateY(-50%);
+    opacity: 0.5;
+    box-shadow: 0 0 10px var(--gold);
+}
+
+.section-title::before { left: calc(50% - 220px); }
+.section-title::after { right: calc(50% - 220px); }
+
+@media (max-width: 700px) {
+    .section-title::before,
+    .section-title::after { display: none; }
+}
+
+/* ==================== ПРОГРЕСС-БАРЫ — БЛЕСК ==================== */
+.progress-fill,
+.player-progress-fill,
+.stat-bar-fill,
+.ach-progress-fill,
+.badges-progress-fill,
+.my-rank-progress-fill {
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill::before,
+.player-progress-fill::before,
+.stat-bar-fill::before,
+.ach-progress-fill::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), transparent);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.progress-fill::after,
+.player-progress-fill::after,
+.stat-bar-fill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.4), 
+        transparent);
+    animation: progressShine 2.5s infinite;
+    pointer-events: none;
+}
+
+@keyframes progressShine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* ==================== ПОДВАЛ — КРАСИВЕЕ ==================== */
+.footer {
+    background: rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: var(--glass-blur) !important;
+    border-top: 1px solid rgba(249, 202, 36, 0.2) !important;
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        var(--gold), 
+        transparent);
+    opacity: 0.5;
+}
+
+.footer-logo img {
+    filter: drop-shadow(0 0 15px rgba(249, 202, 36, 0.7)) !important;
+    transition: transform 0.3s;
+}
+
+.footer-logo:hover img {
+    transform: rotate(-10deg) scale(1.1);
+}
+
+.footer-links a {
+    position: relative;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.footer-links a:hover {
+    background: rgba(249, 202, 36, 0.1);
+    color: var(--gold) !important;
+    transform: translateY(-2px);
+}
+
+/* ==================== АНИМАЦИЯ ПОЯВЛЕНИЯ СЕКЦИЙ ==================== */
+.section {
+    animation: sectionFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes sectionFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== ИКОНКИ И ЭМОДЗИ ==================== */
+.stat-icon,
+.hall-icon,
+.value-icon,
+.guide-icon,
+.earn-icon,
+.ach-page-icon,
+.reward-icon,
+.minigame-icon {
+    filter: drop-shadow(0 0 10px rgba(249, 202, 36, 0.4));
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s;
+}
+
+.panel:hover .stat-icon,
+.hall-card:hover .hall-icon,
+.value-card:hover .value-icon,
+.guide-card:hover .guide-icon {
+    transform: scale(1.2) rotate(-8deg);
+    filter: drop-shadow(0 0 20px rgba(249, 202, 36, 0.8));
+}
+
+/* ==================== АВАТАРЫ ==================== */
+.player-avatar,
+.profile-avatar,
+.elite-card-avatar {
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.player-card:hover .player-avatar,
+.elite-card:hover .elite-card-avatar {
+    transform: scale(1.08);
+    box-shadow: 
+        0 0 25px rgba(249, 202, 36, 0.7),
+        inset 0 0 15px rgba(249, 202, 36, 0.3) !important;
+}
+
+/* Вращающееся кольцо вокруг аватара */
+.player-avatar::after,
+.elite-card-avatar::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    background: linear-gradient(45deg, 
+        transparent, 
+        rgba(249, 202, 36, 0.5), 
+        transparent) border-box;
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) padding-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s;
+    animation: rotateRing 3s linear infinite;
+}
+
+.player-card:hover .player-avatar::after,
+.elite-card:hover .elite-card-avatar::after {
+    opacity: 1;
+}
+
+@keyframes rotateRing {
+    to { transform: rotate(360deg); }
+}
+
+/* ==================== ЗАГОЛОВКИ HERO ==================== */
+.hero-title {
+    animation: heroTitlePulse 4s ease-in-out infinite;
+}
+
+@keyframes heroTitlePulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 30px rgba(249, 202, 36, 0.5));
+    }
+    50% {
+        filter: drop-shadow(0 0 60px rgba(249, 202, 36, 0.9));
+    }
+}
+
+/* ==================== ПЛАВНЫЙ СКРОЛЛ ==================== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ==================== КАСТОМНЫЙ СКРОЛЛБАР ==================== */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--gold), var(--gold-dark));
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--gold-light), var(--gold));
+}
+
+/* ==================== SELECTION ==================== */
+::selection {
+    background: rgba(249, 202, 36, 0.3);
+    color: #fff;
+}
+
+/* ==================== FOCUS STATES ==================== */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: inherit;
+}
+
+/* ==================== МОБИЛЬНАЯ ОПТИМИЗАЦИЯ ==================== */
+@media (max-width: 768px) {
+    .section {
+        animation: none;
+    }
+    
+    .btn:hover,
+    .panel:hover,
+    .player-card:hover {
+        transform: none !important;
+    }
+    
+    /* Отключаем тяжёлые эффекты на мобильных */
+    .hero-title {
+        animation: none;
+    }
+    
+    body::before {
+        display: none;
+    }
+}
+
+/* ==================== REDUCED MOTION ==================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    body::before {
+        display: none;
+    }
+}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>😂 Мемы клуба — нагибаторы3000</title>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="upgrade.css">
+    <link rel="stylesheet" href="upgrade2.css">
+    <link rel="stylesheet" href="memes.css">
+</head>
+<body>
+
+    <div class="bg-layer" aria-hidden="true">
+        <div class="bg-gradient"></div>
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Логотип" class="logo-img">
+                <span class="logo-text">нагибаторы3000</span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="index.html">Главная</a>
+                <a href="profiles.html">👤 Профили</a>
+                <a href="ranks.html">🏅 Звания</a>
+                <a href="achievements.html">🏆 Достижения</a>
+                <a href="memes.html" class="active">😂 Мемы</a>
+                <a href="guides.html">📚 Гайды</a>
+                <a href="team.html">🏆 Киберспорт</a>
+                <a href="core.html">🔒 Штаб</a>
+            </nav>
+            <div class="header-actions">
+                <button class="theme-btn" id="theme-toggle">🌙</button>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank" class="btn-tg">💬 Telegram</a>
+                <button class="burger" id="burger"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero compact">
+        <div class="container hero-content">
+            <h1 class="hero-title">😂 Мемы клуба</h1>
+            <p class="hero-slogan">Внутренние шутки и легендарные моменты</p>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-icon">😂</span>
+                    <span class="stat-value" data-count="6">0</span>
+                    <span class="stat-label">Мемов</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">🔥</span>
+                    <span class="stat-value" data-count="100">0</span>
+                    <span class="stat-label">Лайков</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФИЛЬТРЫ -->
+    <section class="section">
+        <div class="container">
+            <div class="filters reveal-up" id="meme-filters">
+                <button class="filter-btn active" data-cat="all">🎯 Все</button>
+                <button class="filter-btn" data-cat="chat">💬 Из чата</button>
+                <button class="filter-btn" data-cat="pride">🏆 Гордость</button>
+                <button class="filter-btn" data-cat="fun">😂 Весёлые</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕТКА МЕМОВ -->
+    <section class="section">
+        <div class="container">
+            <div class="memes-grid" id="memes-grid"></div>
+        </div>
+    </section>
+
+    <!-- ПРЕДЛОЖИТЬ МЕМ -->
+    <section class="section">
+        <div class="container">
+            <div class="meme-suggest reveal-up">
+                <h2 class="section-title">📤 Есть мем?</h2>
+                <p class="section-sub">Отправь его в Telegram-чат клуба, и он появится здесь</p>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank" class="btn btn-gold">💬 В Telegram-чат</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Логотип">
+                <span>нагибаторы3000</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">← На главную</a>
+                <a href="profiles.html">👤 Профили</a>
+                <a href="https://t.me/+DL9_0ZsiBn0zZGE6" target="_blank">💬 Telegram</a>
+            </div>
+            <p class="footer-copy">© 2026 нагибаторы3000</p>
+        </div>
+    </footer>
+
+    <!-- МОДАЛКА ПРОСМОТРА -->
+    <div class="meme-modal" id="meme-modal">
+        <div class="meme-modal-content">
+            <button class="meme-modal-close" id="meme-modal-close">✕</button>
+            <img src="" alt="" class="meme-modal-img" id="meme-modal-img">
+            <div class="meme-modal-title" id="meme-modal-title">Название</div>
+            <div class="meme-modal-desc" id="meme-modal-desc">Описание</div>
+            <div class="meme-modal-actions">
+                <button class="meme-action-btn" onclick="shareMeme()">📤 Поделиться</button>
+                <button class="meme-action-btn" onclick="closeMeme()">✕ Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="memes.js"></script>
+</body>
+</html>

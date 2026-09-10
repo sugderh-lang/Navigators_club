@@ -80,7 +80,7 @@
                     <img src="images/logo.png" alt="Логотип" class="intro-logo" onerror="this.style.display='none'">
                 </div>
                 <h1 class="intro-title">НАГИБАТОРЫ3000</h1>
-                <p class="intro-subtitle">Тиран на марше</p>
+                <p class="intro-subtitle">Тиран на Марише</p>
                 <div class="intro-loader">
                     <div class="intro-loader-fill"></div>
                 </div>

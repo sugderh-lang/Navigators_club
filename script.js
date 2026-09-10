@@ -1,29 +1,32 @@
 // ==================== ДАННЫЕ УЧАСТНИКОВ ====================
+// Аватары: парни boy-01..boy-10, девушки girl-01..girl-10
+// Остальные — DiceBear автоматически
+
 const players = [
-    { nick: "грудь Насти", tgNick: "настоящий китаец", role: "Ветеран", trophies: 119571, mk: 4, inChat: false, isVeteran: true, bestBrawler: "Байрон", tag: "#8QCVQPYY9", description: "Топ-1 по кубкам. Сенсация клуба." },
-    { nick: "Batya", role: "Участник", trophies: 103039, mk: 0, inChat: false, isVeteran: false, bestBrawler: "Спайк", description: "Мощный игрок, недавно в клубе." },
-    { nick: "Ақымақ ешкі", role: "Ветеран", trophies: 90935, mk: 4, inChat: false, isVeteran: true, bestBrawler: "Поко", tag: "#22PJGQYG0", description: "Прирождённый талант." },
-    { nick: "ляшки насти", role: "Участник", trophies: 90832, mk: 0, inChat: false, isVeteran: false },
-    { nick: "КЕФУКА", tgNick: "Гудвин", role: "Ветеран · Лидер чата", trophies: 76553, mk: 4, inChat: true, isVeteran: true, description: "«Был бы выбор между учёбой и воровством...»" },
-    { nick: "SexySwag", role: "Ветеран", trophies: 74932, mk: 4, inChat: false, isVeteran: true, bestBrawler: "Спайк", tag: "#98PQUPOYG", description: "Ветрознергетика." },
-    { nick: "Funtik", role: "Ветеран", trophies: 71815, mk: 5, inChat: false, isVeteran: true },
-    { nick: "с гордостью", role: "Участник", trophies: 71264, mk: 0, inChat: false, isVeteran: false },
-    { nick: "Bonjour", role: "Участник", trophies: 68778, mk: 3, inChat: false, isVeteran: false },
-    { nick: "Baiker?", tgNick: "Flins", role: "Ветеран", trophies: 64871, mk: 5, inChat: true, isVeteran: true, bestBrawler: "Леон", tag: "#PQYLVUQY2", description: "«Время на ветер»" },
-    { nick: "АНТОХА", role: "Ветеран", trophies: 62267, mk: 2, inChat: false, isVeteran: true, tag: "#22QO028R9", description: "«Некогда объяснять!»" },
+    { nick: "грудь Насти", tgNick: "настоящий китаец", role: "Ветеран", trophies: 119571, mk: 4, inChat: false, isVeteran: true, bestBrawler: "Байрон", tag: "#8QCVQPYY9", description: "Топ-1 по кубкам. Сенсация клуба.", avatar: "images/avatars/boy-01.jpg" },
+    { nick: "Batya", role: "Участник", trophies: 103039, mk: 0, inChat: false, isVeteran: false, avatar: "images/avatars/boy-02.jpg" },
+    { nick: "Ақымақ ешкі", role: "Ветеран", trophies: 90935, mk: 4, inChat: false, isVeteran: true, bestBrawler: "Поко", avatar: "images/avatars/boy-03.jpg" },
+    { nick: "ляшки насти", role: "Участник", trophies: 90832, mk: 0, inChat: false, isVeteran: false, avatar: "images/avatars/boy-04.jpg" },
+    { nick: "КЕФУКА", tgNick: "Гудвин", role: "Ветеран · Лидер чата", trophies: 76553, mk: 4, inChat: true, isVeteran: true, description: "«Был бы выбор между учёбой и воровством...»", avatar: "images/avatars/boy-05.jpg" },
+    { nick: "SexySwag", role: "Ветеран", trophies: 74932, mk: 4, inChat: false, isVeteran: true, bestBrawler: "Спайк", avatar: "images/avatars/boy-06.jpg" },
+    { nick: "Funtik", role: "Ветеран", trophies: 71815, mk: 5, inChat: false, isVeteran: true, avatar: "images/avatars/boy-07.jpg" },
+    { nick: "с гордостью", role: "Участник", trophies: 71264, mk: 0, inChat: false, isVeteran: false, avatar: "images/avatars/boy-08.jpg" },
+    { nick: "Bonjour", role: "Участник", trophies: 68778, mk: 3, inChat: false, isVeteran: false, avatar: "images/avatars/boy-09.jpg" },
+    { nick: "Baiker?", tgNick: "Flins", role: "Ветеран", trophies: 64871, mk: 5, inChat: true, isVeteran: true, bestBrawler: "Леон", avatar: "images/avatars/boy-10.jpg" },
+    { nick: "АНТОХА", role: "Ветеран", trophies: 62267, mk: 2, inChat: false, isVeteran: true, description: "«Некогда объяснять!»" },
     { nick: "zero", tgNick: "Илья", role: "Пане президент", trophies: 60992, mk: 4, inChat: true, isVeteran: true, description: "«1667»" },
-    { nick: "Kabachok", role: "Участник", trophies: 56408, mk: 3, inChat: false, isVeteran: false, tag: "#PLGP8PVCV", description: "«Мастер на все руки»" },
+    { nick: "Kabachok", role: "Участник", trophies: 56408, mk: 3, inChat: false, isVeteran: false },
     { nick: "Swin", role: "Участник", trophies: 53157, mk: 0, inChat: false, isVeteran: false },
     { nick: "gandOn", role: "Участник", trophies: 51470, mk: 0, inChat: false, isVeteran: false },
-    { nick: "Nemo/щь", role: "Ветеран", trophies: 50664, mk: 4, inChat: false, isVeteran: true, tag: "#9RGCCLY8U", description: "«Красавчик»" },
-    { nick: "Pipsin", role: "Ветеран", trophies: 49807, mk: 5, inChat: false, isVeteran: true, tag: "#9Q88QRQG9", description: "«Жадина»" },
-    { nick: "Александр", role: "Участник", trophies: 48268, mk: 1, inChat: false, isVeteran: false, tag: "#VJ28Y2VOV", description: "«Бесконечность — не предел!»" },
+    { nick: "Nemo/щь", role: "Ветеран", trophies: 50664, mk: 4, inChat: false, isVeteran: true, description: "«Красавчик»" },
+    { nick: "Pipsin", role: "Ветеран", trophies: 49807, mk: 5, inChat: false, isVeteran: true, description: "«Жадина»" },
+    { nick: "Александр", role: "Участник", trophies: 48268, mk: 1, inChat: false, isVeteran: false },
     { nick: "Revo", role: "Участник", trophies: 47262, mk: 0, inChat: false, isVeteran: false },
     { nick: "NeOrum", tgNick: "@Tv_seller", role: "Участник", trophies: 42713, mk: 3, inChat: true, isVeteran: false, description: "«shit_seller»" },
     { nick: "jumber", role: "Участник", trophies: 40539, mk: 0, inChat: false, isVeteran: false },
     { nick: "Kerzi's | Veyro", role: "Участник", trophies: 39220, mk: 0, inChat: false, isVeteran: false },
     { nick: "Simoha", role: "Участник", trophies: 38951, mk: 0, inChat: false, isVeteran: false },
-    { nick: "S.T.A.L.K.E.R.", tgNick: "мариша", role: "Президент", trophies: 37479, mk: 3, inChat: false, isVeteran: true, tag: "#9JR8C8CR9", description: "«Одной левой!»" },
+    { nick: "S.T.A.L.K.E.R.", tgNick: "мариша", role: "Президент", trophies: 37479, mk: 3, inChat: false, isVeteran: true, description: "«Одной левой!»", avatar: "images/avatars/girl-05.jpg" },
     { nick: "OG tosos", role: "Участник", trophies: 37090, mk: 2, inChat: false, isVeteran: false },
     { nick: "@MONSTER", role: "Участник", trophies: 36470, mk: 0, inChat: false, isVeteran: false },
     { nick: "andruha", role: "Участник", trophies: 35190, mk: 0, inChat: false, isVeteran: false },
@@ -34,16 +37,16 @@ const players = [
 
 // ==================== ЭЛИТА ====================
 const eliteMembers = [
-    { nick: "Гудвин", roleIcon: "👑", role: "Основатель · Философ", quote: "«Был бы выбор между учёбой и воровством...»" },
-    { nick: "Илья (zero)", roleIcon: "🎩", role: "Пане президент", quote: "«1667»" },
-    { nick: "Flins (Baiker?)", roleIcon: "🎯", role: "Снайпер", quote: "«Время на ветер»" },
-    { nick: "NeOrum", roleIcon: "💰", role: "Барыга", quote: "«shit_seller»" },
-    { nick: "Iris", roleIcon: "💬", role: "Хранитель порядка", quote: "Чат-менеджер" },
-    { nick: "True Mafia", roleIcon: "🕶️", role: "Тень", quote: "Молчит, но следит" },
-    { nick: "Assiverb", roleIcon: "😂", role: "Мемный генерал", quote: "Флуд клуба" },
-    { nick: "Кирилл", roleIcon: "🎸", role: "Меломан", quote: "The Raven" },
-    { nick: "Nastoyashly_kitaec", roleIcon: "🧐", role: "Интеллигент", quote: "«Excuse me, sir»" },
-    { nick: "Vivian", roleIcon: "🌸", role: "Душа компании", quote: "«(๑>ᴗ<๑)»" },
+    { nick: "Гудвин", roleIcon: "👑", role: "Основатель · Философ", quote: "«Был бы выбор между учёбой и воровством...»", avatar: "images/avatars/boy-05.jpg" },
+    { nick: "Илья (zero)", roleIcon: "🎩", role: "Пане президент", quote: "«1667»", avatar: "images/avatars/boy-06.jpg" },
+    { nick: "Flins (Baiker?)", roleIcon: "🎯", role: "Снайпер", quote: "«Время на ветер»", avatar: "images/avatars/boy-10.jpg" },
+    { nick: "NeOrum", roleIcon: "💰", role: "Барыга", quote: "«shit_seller»", avatar: "images/avatars/boy-09.jpg" },
+    { nick: "Iris", roleIcon: "💬", role: "Хранитель порядка", quote: "Чат-менеджер", avatar: "images/avatars/girl-03.jpg" },
+    { nick: "True Mafia", roleIcon: "🕶️", role: "Тень", quote: "Молчит, но следит", avatar: "images/avatars/boy-08.jpg" },
+    { nick: "Assiverb", roleIcon: "😂", role: "Мемный генерал", quote: "Флуд клуба", avatar: "images/avatars/boy-07.jpg" },
+    { nick: "Кирилл", roleIcon: "🎸", role: "Меломан", quote: "The Raven", avatar: "images/avatars/boy-04.jpg" },
+    { nick: "Nastoyashly_kitaec", roleIcon: "🧐", role: "Интеллигент", quote: "«Excuse me, sir»", avatar: "images/avatars/boy-03.jpg" },
+    { nick: "Vivian", roleIcon: "🌸", role: "Душа компании", quote: "«(๑>ᴗ<๑)»", avatar: "images/avatars/girl-01.jpg" },
 ];
 
 // ==================== МЕГАКОПИЛКА ====================
@@ -60,7 +63,6 @@ const megapigData = [
 const hallOfFame = [
     { icon: "🏆", title: "Максимум кубков", nick: "грудь Насти", value: "119 571" },
     { icon: "🎯", title: "Больше всех в МК", nick: "Pipsin / Baiker? / Funtik", value: "5 побед" },
-    { icon: "👑", title: "Основатель клуба", nick: "Гудвин", value: "Лидер чата" },
     { icon: "🥷", title: "Президент", nick: "мариша (Stalker)", value: "37 479 кубков" },
     { icon: "🎩", title: "Пане президент", nick: "Илья (zero)", value: "60 992 кубка" },
     { icon: "🔥", title: "Самый активный", nick: "КЕФУКА", value: "4 победы в МК" },
@@ -72,63 +74,54 @@ const calendarEvents = [
     { day: "Вторник", event: "Мегапорт", time: "19:00 – 22:00", badge: "normal" },
     { day: "Среда", event: "Свободная игра", time: "весь день", badge: "optional" },
     { day: "Четверг", event: "Клубные войны", time: "20:00 – 22:00", badge: "important" },
-    { day: "Пятница", event: "Мини-игры (Медведь-шатун)", time: "20:00", badge: "normal" },
+    { day: "Пятница", event: "Мини-игры", time: "20:00", badge: "normal" },
     { day: "Суббота", event: "Турнир внутри клуба", time: "18:00", badge: "important" },
     { day: "Воскресенье", event: "Шахматный вечер", time: "19:00", badge: "optional" },
 ];
 
-// ==================== ТИР-ЛИСТ ====================
-const tierList = [
-    { tier: "S", chars: ["Спайк", "Леон", "Кенджи", "Мег", "Сью"] },
-    { tier: "A", chars: ["Поко", "Байрон", "Сэнди", "Гейл", "Фэнг"] },
-    { tier: "B", chars: ["Кольт", "Шелли", "Никита", "Булл", "Дэррил"] },
-    { tier: "C", chars: ["Эль Примо", "Роза", "Джесси", "Пенни", "Карл"] },
-    { tier: "D", chars: ["Нита", "Мортис", "Эдгар", "Хэнк", "Даг"] },
-];
-
 // ==================== ГАЙДЫ ====================
 const guides = [
-    { icon: "🐷", title: "Гайд по мегакопилке", desc: "Как быстро набивать победы в событиях мегакопилки.", points: ["Играй в команде с соклановцами — так больше шансов на победу", "Используй Спайка или Леона для быстрых побед", "Не трать билеты в первые дни — дождись клубного дня"] },
-    { icon: "🏆", title: "Как поднять кубки", desc: "Пошаговая стратегия для роста в рейтинге.", points: ["Играй по 3-4 персонажа, которых знаешь лучше всего", "Избегай тильта — не продолжай после 2-3 поражений", "Смотри реплеи своих поражений — так растёшь быстрее"] },
-    { icon: "🗺️", title: "Разбор карт", desc: "Какие карты лучше для каких персонажей.", points: ["Гем-граб: Спайк, Леон, Сэнди", "Захват кристаллов: Поко, Байрон, Фэнг", "Награда за поимку: Кенджи, Мег, Сью"] },
-    { icon: "⚔️", title: "Стратегия на клубные войны", desc: "Как играть в команде и не проигрывать.", points: ["Распределяйте роли: танк, дамагер, саппорт", "Общайтесь в голосовом чате Telegram", "Играйте после разминки — не сразу после входа"] },
-    { icon: "🧠", title: "Психология игры", desc: "Как не тильтовать и играть стабильно.", points: ["Не играй уставшим или злым", "Делай перерывы каждые 30-40 минут", "Фокус на процессе, а не на результате"] },
-    { icon: "♟️", title: "Шахматы и Brawl Stars", desc: "Как шахматы помогают в игре.", points: ["Читай на 2-3 хода вперёд — как в шахматах", "Думай о позиции, а не только об атаке", "Учись на ошибках, а не повторяй их"] },
+    { icon: "🐷", title: "Гайд по мегакопилке", desc: "Как быстро набивать победы.", points: ["Играй в команде", "Используй Спайка или Леона", "Дождись клубного дня"] },
+    { icon: "🏆", title: "Как поднять кубки", desc: "Пошаговая стратегия.", points: ["Играй по 3-4 персонажа", "Избегай тильта", "Смотри реплеи"] },
+    { icon: "🗺️", title: "Разбор карт", desc: "Какие карты лучше.", points: ["Гем-граб: Спайк, Леон", "Захват: Поко, Байрон", "Поимка: Кенджи, Мег"] },
+    { icon: "⚔️", title: "Стратегия на войны", desc: "Как играть в команде.", points: ["Роли: танк, дамагер, саппорт", "Голосовой чат", "Разминка перед игрой"] },
+    { icon: "🧠", title: "Психология игры", desc: "Как не тильтовать.", points: ["Не играй уставшим", "Перерывы каждые 30 мин", "Фокус на процессе"] },
+    { icon: "♟️", title: "Шахматы и BS", desc: "Как шахматы помогают.", points: ["Читай на 2-3 хода", "Думай о позиции", "Учись на ошибках"] },
 ];
 
 // ==================== СОВЕТЫ ====================
 const tips = [
-    "Играй <strong>по 3-4 персонажа</strong>, а не по всем сразу — так быстрее растёшь.",
-    "Всегда играй <strong>в команде с соклановцами</strong> — это +30% к шансу победы.",
-    "<strong>Не тильтуй</strong> — после 3 поражений сделай перерыв на 15 минут.",
-    "<strong>Смотри реплеи</strong> своих поражений — там 80% уроков.",
-    "Используй <strong>голосовой чат</strong> в Telegram для координации.",
-    "<strong>Не играй на слабом интернете</strong> — лаги = проигрыш.",
-    "Изучай <strong>карты и их особенности</strong> — где укрытия, где точки.",
-    "<strong>Не гонись за убийствами</strong> — цель игры в очках, а не в фрагах.",
-    "<strong>Учись у сильных</strong> — смотри стримы топовых игроков.",
+    "Играй <strong>по 3-4 персонажа</strong> — так быстрее растёшь.",
+    "Всегда играй <strong>в команде с соклановцами</strong>.",
+    "<strong>Не тильтуй</strong> — после 3 поражений перерыв.",
+    "<strong>Смотри реплеи</strong> поражений — там 80% уроков.",
+    "Используй <strong>голосовой чат</strong> в Telegram.",
+    "<strong>Не играй на слабом интернете</strong>.",
+    "Изучай <strong>карты</strong> — где укрытия, где точки.",
+    "<strong>Не гонись за убийствами</strong> — цель в очках.",
+    "<strong>Учись у сильных</strong> — смотри стримы.",
     "<strong>Отдыхай</strong> — мозг работает лучше после паузы.",
 ];
 
 // ==================== FAQ ====================
 const faq = [
-    { q: "Как вступить в клуб?", a: "Нажми кнопку «Вступить» на главной — откроется приглашение в Brawl Stars. Нужно иметь 25 000+ кубков." },
-    { q: "Как попасть в Telegram-чат?", a: "Ссылка в подвале сайта и в шапке. После вступления напиши свой ник в игре." },
-    { q: "Как стать ветераном?", a: "Выполняй все условия: 14 билетов за неделю, все клубные квесты, активность. Повышение за 3 дня до конца недели квестов." },
-    { q: "Что такое мегакопилка?", a: "Это клубное событие, где все игроки собирают победы. Чем больше побед — тем лучше награды для всего клуба." },
-    { q: "Что будет, если не выполнять правила?", a: "Понижение до участника или исключение из клуба. Звание ветерана можно вернуть только на неделе лиги." },
-    { q: "Как часто проводятся турниры?", a: "Внутренние турниры — раз в месяц по субботам. О времени сообщаем в Telegram-чате." },
-    { q: "Можно ли играть с соклановцами?", a: "Да, и это приветствуется! Используй голосовой чат в Telegram для координации." },
+    { q: "Как вступить в клуб?", a: "Нажми кнопку «Вступить» на главной. Нужно 25 000+ кубков." },
+    { q: "Как попасть в Telegram-чат?", a: "Ссылка в подвале сайта. После вступления напиши свой ник." },
+    { q: "Как стать ветераном?", a: "14 билетов за неделю, все квесты, активность." },
+    { q: "Что такое мегакопилка?", a: "Клубное событие, где все собирают победы." },
+    { q: "Что будет за нарушение?", a: "Понижение до участника или исключение." },
+    { q: "Как часто турниры?", a: "Раз в месяц по субботам." },
+    { q: "Можно играть с соклановцами?", a: "Да, приветствуется!" },
 ];
 
 // ==================== СОСТАВ КОМАНДЫ ====================
 const roster = [
-    { icon: "👑", nick: "Гудвин", role: "Лидер", info: "Кубки: <strong>76 553</strong><br>Основной: контроль и стратегия" },
-    { icon: "🎩", nick: "Илья (zero)", role: "Страйкер", info: "Кубки: <strong>60 992</strong><br>Основной: атака и давление" },
-    { icon: "🎯", nick: "Flins (Baiker?)", role: "Снайпер", info: "Кубки: <strong>64 871</strong><br>Основной: дальний бой" },
-    { icon: "💰", nick: "NeOrum", role: "Саппорт", info: "Кубки: <strong>42 713</strong><br>Основной: поддержка команды" },
-    { icon: "🥷", nick: "мариша (Stalker)", role: "Капитан", info: "Кубки: <strong>37 479</strong><br>Основной: координация" },
-    { icon: "🏆", nick: "грудь Насти", role: "Резерв", info: "Кубки: <strong>119 571</strong><br>Основной: топ-1 по кубкам" },
+    { icon: "👑", nick: "Гудвин", role: "Лидер", info: "76 553 кубка" },
+    { icon: "🎩", nick: "Илья (zero)", role: "Страйкер", info: "60 992 кубка" },
+    { icon: "🎯", nick: "Flins (Baiker?)", role: "Снайпер", info: "64 871 кубок" },
+    { icon: "💰", nick: "NeOrum", role: "Саппорт", info: "42 713 кубков" },
+    { icon: "🥷", nick: "мариша (Stalker)", role: "Капитан", info: "37 479 кубков" },
+    { icon: "🏆", nick: "грудь Насти", role: "Резерв", info: "119 571 кубок" },
 ];
 
 // ==================== ТУРНИРНАЯ ТАБЛИЦА ====================
@@ -143,12 +136,12 @@ const tournament = [
 
 // ==================== ДОСТИЖЕНИЯ ====================
 const achievements = [
-    { icon: "🥇", title: "1-е место", desc: "Клубная лига, сезон 2026" },
+    { icon: "🥇", title: "1-е место", desc: "Клубная лига, 2026" },
     { icon: "🏆", title: "1 700 000+", desc: "Общие кубки клуба" },
-    { icon: "🔥", title: "10 побед подряд", desc: "Клубные войны, апрель 2026" },
-    { icon: "💎", title: "100% мегакопилка", desc: "Закрыли 3 раза подряд" },
+    { icon: "🔥", title: "10 побед подряд", desc: "Клубные войны" },
+    { icon: "💎", title: "100% мегакопилка", desc: "Закрыли 3 раза" },
     { icon: "⭐", title: "Quality 69/100", desc: "Рейтинг клуба" },
-    { icon: "🎯", title: "30/30 состав", desc: "Полный клуб с самого старта" },
+    { icon: "🎯", title: "30/30 состав", desc: "Полный клуб" },
 ];
 
 // ==================== РАСПИСАНИЕ ====================
@@ -159,6 +152,13 @@ const schedule = [
     { date: "01.09 · 21:00", match: "нагибаторы3000 vs Rising Stars", status: "loss", statusText: "Поражение 2:3" },
     { date: "28.08 · 20:00", match: "нагибаторы3000 vs Newbie Team", status: "win", statusText: "Победа 3:0" },
 ];
+
+// ==================== УНИВЕРСАЛЬНЫЙ АВАТАР ====================
+function getAvatar(player) {
+    if (player.avatar) return player.avatar;
+    const colors = 'f9ca24,eb4d4b,6ab04c,3498db,9b59b6';
+    return `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(player.nick)}&backgroundColor=${colors}`;
+}
 
 // ==================== АНИМИРОВАННЫЕ СЧЁТЧИКИ ====================
 function animateCounters() {
@@ -180,14 +180,19 @@ function animateCounters() {
 function renderElite() {
     const grid = document.getElementById('elite-grid');
     if (!grid) return;
-    grid.innerHTML = eliteMembers.map(m => `
-        <div class="elite-card">
-            <span class="elite-icon">${m.roleIcon}</span>
-            <div class="elite-nick">${m.nick}</div>
-            <div class="elite-role">${m.role}</div>
-            <div class="elite-quote">${m.quote || ''}</div>
-        </div>
-    `).join('');
+    grid.innerHTML = eliteMembers.map(m => {
+        const avatarUrl = m.avatar || getAvatar(m);
+        return `
+            <div class="elite-card">
+                <div class="elite-card-avatar">
+                    <img src="${avatarUrl}" alt="${m.nick}" class="elite-avatar-img">
+                </div>
+                <div class="elite-nick">${m.nick}</div>
+                <div class="elite-role">${m.role}</div>
+                <div class="elite-quote">${m.quote || ''}</div>
+            </div>
+        `;
+    }).join('');
 }
 
 // ==================== ПРОФИЛЬ ИГРОКА ====================
@@ -205,7 +210,9 @@ function openProfile(nick) {
 
     body.innerHTML = `
         <div class="profile-header">
-            <div class="profile-avatar">${p.nick[0].toUpperCase()}</div>
+            <div class="profile-avatar">
+                <img src="${getAvatar(p)}" alt="${p.nick}" class="profile-avatar-img">
+            </div>
             <div class="profile-nick">${p.nick}</div>
             <div class="profile-role">${p.role}</div>
             ${badge}
@@ -228,11 +235,14 @@ function openProfile(nick) {
     modal.classList.add('active');
 }
 
-document.getElementById('modal-close')?.addEventListener('click', () => {
-    document.getElementById('profile-modal').classList.remove('active');
-});
-document.getElementById('profile-modal')?.addEventListener('click', (e) => {
-    if (e.target.id === 'profile-modal') e.target.classList.remove('active');
+// Закрытие модалки
+document.addEventListener('DOMContentLoaded', () => {
+    const closeBtn = document.getElementById('modal-close');
+    const modal = document.getElementById('profile-modal');
+    if (closeBtn) closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+    if (modal) modal.addEventListener('click', (e) => {
+        if (e.target.id === 'profile-modal') modal.classList.remove('active');
+    });
 });
 
 // ==================== ТОП-3 ====================
@@ -328,18 +338,6 @@ function initBurger() {
     nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
 }
 
-// ==================== ТИР-ЛИСТ ====================
-function renderTierList() {
-    const el = document.getElementById('tier-list');
-    if (!el) return;
-    el.innerHTML = tierList.map(t => `
-        <div class="tier-row tier-${t.tier}">
-            <div class="tier-label">${t.tier}</div>
-            <div class="tier-chars">${t.chars.map(c => `<span class="tier-char">${c}</span>`).join('')}</div>
-        </div>
-    `).join('');
-}
-
 // ==================== ГАЙДЫ ====================
 function renderGuides() {
     const el = document.getElementById('guides-grid');
@@ -381,7 +379,7 @@ function renderFaq() {
     });
 }
 
-// ==================== СОСТАВ КОМАНДЫ ====================
+// ==================== СОСТАВ ====================
 function renderRoster() {
     const el = document.getElementById('roster-grid');
     if (!el) return;
@@ -448,8 +446,6 @@ function initParticles() {
         p.style.animationDuration = (15 + Math.random() * 20) + 's';
         p.style.animationDelay = (-Math.random() * 30) + 's';
         p.style.width = p.style.height = (2 + Math.random() * 3) + 'px';
-        if (Math.random() > 0.7) p.style.background = 'var(--pink)';
-        if (Math.random() > 0.85) p.style.background = 'var(--purple)';
         frag.appendChild(p);
     }
     container.appendChild(frag);
@@ -479,7 +475,7 @@ function applyStagger() {
     });
 }
 
-// ==================== 3D TILT ====================
+// ==================== TILT ====================
 function initTilt() {
     if (window.innerWidth < 1000) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -525,7 +521,7 @@ function initHeaderScroll() {
     }, { passive: true });
 }
 
-// ==================== PODIUM (ТОП-3) ====================
+// ==================== PODIUM ====================
 function renderPodium() {
     const el = document.getElementById('podium');
     if (!el) return;
@@ -564,7 +560,7 @@ function renderPlayerCards(filter = 'all') {
                 <span class="player-rank-badge ${rankClass}">#${rank}</span>
                 <div class="player-card-header">
                     <div class="player-avatar">
-                        ${p.nick[0].toUpperCase()}
+                        <img src="${getAvatar(p)}" alt="${p.nick}" class="player-avatar-img">
                         ${isTop ? '<div class="player-avatar-ring"></div>' : ''}
                         <span class="player-online ${online ? '' : 'offline'}"></span>
                     </div>
@@ -634,15 +630,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initFilters();
     initBurger();
 
-    // Анимации
     initParticles();
     applyStagger();
     initScrollReveal();
     initParallax();
     initHeaderScroll();
 
-    // Для других страниц (guides, team)
-    renderTierList();
     renderGuides();
     renderTips();
     renderFaq();
@@ -650,4 +643,33 @@ document.addEventListener('DOMContentLoaded', () => {
     renderTournament();
     renderAchievements();
     renderSchedule();
+});/* ==================== СКРОЛЛ-ПРОГРЕСС ==================== */
+function initScrollProgress() {
+    const bar = document.createElement('div');
+    bar.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        width: 0%;
+        background: linear-gradient(90deg, #f9ca24, #eb4d4b, #f9ca24);
+        z-index: 99999;
+        box-shadow: 0 0 15px rgba(249, 202, 36, 0.8);
+        pointer-events: none;
+        transition: width 0.1s;
+    `;
+    bar.id = 'scroll-progress-bar';
+    document.body.appendChild(bar);
+    
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const percent = (scrollTop / docHeight) * 100;
+        bar.style.width = percent + '%';
+    }, { passive: true });
+}
+
+// Запуск
+document.addEventListener('DOMContentLoaded', () => {
+    initScrollProgress();
 });
