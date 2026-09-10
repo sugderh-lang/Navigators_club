@@ -1,0 +1,383 @@
+/* ============================================================
+   MOBILE-LITE.CSS — Облегчённый режим для телефонов
+   Отключает тяжёлые эффекты на мобильных для производительности
+   ============================================================ */
+
+/* ==================== ОБЩИЕ ОПТИМИЗАЦИИ ДЛЯ ТЕЛЕФОНОВ ==================== */
+@media (max-width: 900px) {
+
+    /* ========== 1. ОТКЛЮЧАЕМ ВСЕ ЧАСТИЦЫ ========== */
+    .bg-particles,
+    .bg-particles::before,
+    .bg-particles::after,
+    .particle,
+    .hero-shine,
+    .bg-glow,
+    .bg-glow-1,
+    .bg-glow-2 {
+        display: none !important;
+    }
+
+    /* ========== 2. УБИРАЕМ BLUR (самое тяжёлое) ========== */
+    *,
+    *::before,
+    *::after {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    /* ========== 3. УПРОЩАЕМ ФОН ========== */
+    body {
+        background: #060B18 !important;
+        background-attachment: scroll !important;
+    }
+
+    body::before,
+    body::after {
+        display: none !important;
+    }
+
+    /* ========== 4. УБИРАЕМ ВСЕ СВЕЧЕНИЯ ========== */
+    .hero-title,
+    .section-title,
+    .stat-value,
+    .player-nick,
+    .elite-nick,
+    .hall-nick,
+    .logo-text,
+    .logo-img {
+        text-shadow: none !important;
+        filter: none !important;
+        animation: none !important;
+    }
+
+    /* ========== 5. УБИРАЕМ АНИМАЦИИ ЗАГОЛОВКОВ ========== */
+    .section-title::before,
+    .section-title::after {
+        display: none !important;
+    }
+
+    .section-title {
+        background: none !important;
+        -webkit-text-fill-color: #FFD23F !important;
+        color: #FFD23F !important;
+        animation: none !important;
+        filter: none !important;
+    }
+
+    /* ========== 6. ОТКЛЮЧАЕМ PARALLAX ========== */
+    [data-parallax] {
+        transform: none !important;
+    }
+
+    .hero-text,
+    .hero-visual {
+        transform: none !important;
+    }
+
+    /* ========== 7. ОТКЛЮЧАЕМ 3D-TILT И HOVER-ЭФФЕКТЫ ========== */
+    .player-card,
+    .elite-card,
+    .hall-card,
+    .guide-card,
+    .shop-card,
+    .badge-card,
+    .meme-card,
+    .ach-page-card {
+        transform: none !important;
+        transition: none !important;
+    }
+
+    .player-card:hover,
+    .elite-card:hover,
+    .hall-card:hover,
+    .player-card:active,
+    .elite-card:active {
+        transform: none !important;
+    }
+
+    /* ========== 8. УБИРАЕМ МНОЖЕСТВЕННЫЕ АНИМАЦИИ ========== */
+    .elite-card,
+    .stat-card,
+    .hero-character,
+    .hero-character-img,
+    .hero-character-glow,
+    .hero-character-ring,
+    .logo-img,
+    .minigame-icon,
+    .hall-icon,
+    .value-icon,
+    .card-icon,
+    .podium-crown {
+        animation: none !important;
+    }
+
+    /* ========== 9. УБИРАЕМ БЛЕСКИ И SHIMMER ========== */
+    .btn-shimmer,
+    .btn-gold::after,
+    .btn-hero::after,
+    .progress-fill::after,
+    .player-progress-fill::after,
+    .stat-bar-fill::after,
+    .ach-page-progress-fill::after,
+    .ach-page-rarity::before {
+        display: none !important;
+        animation: none !important;
+    }
+
+    /* ========== 10. УПРОЩАЕМ КАРТОЧКИ ========== */
+    .panel,
+    .elite-card,
+    .hall-card,
+    .cal-card,
+    .value-card,
+    .guide-card,
+    .shop-card,
+    .badge-card,
+    .player-card,
+    .minigame-card,
+    .achievement-card,
+    .rank-detail-card,
+    .rank-members-group,
+    .live-stat-card,
+    .activity-item,
+    .meme-card {
+        background: rgba(16, 26, 61, 0.9) !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+        transition: none !important;
+    }
+
+    .panel:hover,
+    .player-card:hover,
+    .elite-card:hover,
+    .hall-card:hover,
+    .guide-card:hover,
+    .shop-card:hover,
+    .badge-card:hover {
+        transform: none !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    /* ========== 11. УБИРАЕМ ГРАДИЕНТНЫЕ АНИМАЦИИ ФОНА ========== */
+    .bg-gradient {
+        animation: none !important;
+        background: #060B18 !important;
+    }
+
+    /* ========== 12. ОТКЛЮЧАЕМ SCROLL-PROGRESS ========== */
+    .scroll-progress {
+        display: none !important;
+    }
+
+    /* ========== 13. ОТКЛЮЧАЕМ CONIC-ГРАДИЕНТЫ (тяжёлые) ========== */
+    .ach-page-card::after,
+    .ach-page-card.legendary::after,
+    .legendary::after,
+    .ach-page-card::before {
+        display: none !important;
+        animation: none !important;
+    }
+
+    /* ========== 14. УПРОЩАЕМ AVATAR ВРАЩЕНИЕ ========== */
+    .player-avatar::after,
+    .elite-card-avatar::after,
+    .hero-character-ring {
+        display: none !important;
+        animation: none !important;
+    }
+
+    /* ========== 15. УБИРАЕМ ВСЕ HOVER LIGHT EFFECTS ========== */
+    .player-card::before,
+    .elite-card::before,
+    .hall-card::before,
+    .guide-card::before,
+    .shop-card::before,
+    .badge-card::before {
+        display: none !important;
+    }
+
+    /* ========== 16. УБИРАЕМ СЛОЖНЫЕ TOOLTIPS ========== */
+    .ach-page-tooltip,
+    .rank-step-tooltip {
+        display: none !important;
+    }
+
+    /* ========== 17. УПРОЩАЕМ HERO CHARACTER ========== */
+    .hero-character-glow {
+        display: none !important;
+    }
+
+    .hero-character-img {
+        filter: none !important;
+    }
+
+    /* ========== 18. УПРОЩАЕМ КНОПКИ ========== */
+    .btn,
+    .btn-gold,
+    .btn-outline,
+    .btn-hero,
+    .filter-btn,
+    .tab-btn {
+        transition: opacity 0.15s !important;
+        box-shadow: none !important;
+    }
+
+    .btn:hover,
+    .btn-gold:hover,
+    .btn-outline:hover,
+    .btn-hero:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    .btn:active,
+    .btn-gold:active,
+    .btn-outline:active {
+        opacity: 0.8;
+    }
+
+    /* ========== 19. ПЛАВНОСТЬ СКРОЛЛА ========== */
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* ========== 20. REVEAL-АНИМАЦИИ ОТКЛЮЧАЕМ ========== */
+    .reveal-up,
+    .stagger > * {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    /* ========== 21. HEADER — БЕЗ BACKDROP ========== */
+    .header {
+        background: rgba(6, 11, 24, 0.98) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    .header::before {
+        animation: none !important;
+    }
+
+    /* ========== 22. МОДАЛКИ — БЕЗ BACKDROP-FILTER ========== */
+    .modal-content,
+    .ach-modal-content,
+    .meme-modal-content,
+    .game-modal-content,
+    .castle-modal-content,
+    .buy-modal-content,
+    .success-modal-content,
+    .roulette-modal-content,
+    .rankup-content,
+    .notif-panel,
+    .cmd-palette {
+        background: #101A3D !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8) !important;
+    }
+
+    /* ========== 23. ОТКЛЮЧАЕМ ЧАСТИЦЫ В МОДАЛКАХ ========== */
+    .rankup-particles,
+    .success-particles,
+    .ach-modal-particles,
+    .roulette-modal-particles,
+    .badge-modal-particles,
+    .intro-particles {
+        display: none !important;
+    }
+
+    /* ========== 24. INTRO — УПРОЩАЕМ ========== */
+    .intro-rays,
+    .intro-flash,
+    .intro-particles,
+    .intro-logo-glow {
+        display: none !important;
+    }
+
+    .intro-logo,
+    .intro-title,
+    .intro-subtitle {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    /* ========== 25. ПРОГРЕСС-БАРЫ БЕЗ АНИМАЦИИ ========== */
+    .progress-fill,
+    .player-progress-fill,
+    .stat-bar-fill,
+    .ach-progress-fill,
+    .badges-progress-fill {
+        transition: width 0.3s !important;
+        box-shadow: none !important;
+    }
+
+    /* ========== 26. СВЕЧЕНИЕ ОТКЛЮЧАЕМ ВЕЗДЕ ========== */
+    * {
+        text-shadow: none !important;
+    }
+
+    /* Для некоторых элементов оставляем минимальное свечение */
+    .logo-text,
+    .hero-title,
+    .section-title {
+        text-shadow: 0 0 10px rgba(255, 210, 63, 0.3) !important;
+    }
+}
+
+/* ==================== СУПЕР-ЭКОНОМНЫЙ РЕЖИМ (для старых телефонов) ==================== */
+@media (max-width: 400px) {
+    .logo-text {
+        display: none;
+    }
+
+    .logo-img {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    .section {
+        padding: 40px 0 !important;
+    }
+
+    .hero {
+        padding: 30px 0 40px !important;
+        min-height: auto !important;
+    }
+
+    .hero-title {
+        font-size: 1.8rem !important;
+    }
+
+    .stat-card {
+        padding: 10px 14px !important;
+    }
+
+    .stat-value {
+        font-size: 1.3rem !important;
+    }
+}
+
+/* ==================== PREFERS-REDUCED-MOTION (для всех) ==================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .bg-particles,
+    .particle,
+    .bg-glow,
+    .scroll-progress {
+        display: none !important;
+    }
+}
