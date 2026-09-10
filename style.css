@@ -1344,3 +1344,502 @@ body {
     border: 3px solid var(--gold);
     box-shadow: 0 0 40px rgba(249, 202, 36, 0.6);
 }
+/* ============================================================
+   JOIN SECTION — Привлечение новых участников
+   ============================================================ */
+
+.join-section {
+    padding: 80px 20px;
+    position: relative;
+}
+
+.join-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(255, 210, 63, 0.08), transparent 60%);
+    pointer-events: none;
+}
+
+.join-card {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    background: linear-gradient(135deg, 
+        rgba(16, 26, 61, 0.95), 
+        rgba(11, 18, 48, 0.98));
+    border: 2px solid rgba(255, 210, 63, 0.4);
+    border-radius: 32px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.6),
+        0 0 60px rgba(255, 210, 63, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    text-align: center;
+}
+
+/* Светящаяся рамка сверху */
+.join-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        #FFD23F 30%, 
+        #fff 50%, 
+        #FFD23F 70%, 
+        transparent);
+    animation: joinBorderGlow 4s ease-in-out infinite;
+}
+
+@keyframes joinBorderGlow {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* ==================== СВЕЧЕНИЕ ==================== */
+.join-glow {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 210, 63, 0.25), transparent 70%);
+    filter: blur(60px);
+    pointer-events: none;
+    animation: joinGlowPulse 5s ease-in-out infinite;
+}
+
+@keyframes joinGlowPulse {
+    0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+    50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+}
+
+/* ==================== ЧАСТИЦЫ ==================== */
+.join-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.join-particle {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.15;
+    filter: drop-shadow(0 0 15px rgba(255, 210, 63, 0.5));
+    animation: joinParticleFloat 15s ease-in-out infinite;
+}
+
+.join-particle:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+.join-particle:nth-child(2) { top: 20%; right: 8%; animation-delay: 2s; }
+.join-particle:nth-child(3) { top: 60%; left: 10%; animation-delay: 4s; }
+.join-particle:nth-child(4) { top: 70%; right: 5%; animation-delay: 6s; }
+.join-particle:nth-child(5) { top: 40%; left: 3%; animation-delay: 8s; }
+.join-particle:nth-child(6) { top: 80%; right: 12%; animation-delay: 10s; }
+
+@keyframes joinParticleFloat {
+    0%, 100% { 
+        transform: translate(0, 0) rotate(0deg) scale(1); 
+        opacity: 0.15;
+    }
+    50% { 
+        transform: translate(30px, -40px) rotate(180deg) scale(1.3); 
+        opacity: 0.3;
+    }
+}
+
+/* ==================== КОРОНА ==================== */
+.join-crown {
+    font-size: 4.5rem;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 40px rgba(255, 210, 63, 0.8));
+    animation: joinCrownFloat 3s ease-in-out infinite;
+    display: inline-block;
+}
+
+@keyframes joinCrownFloat {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+/* ==================== ЗАГОЛОВОК ==================== */
+.join-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    background: linear-gradient(180deg, #fff 0%, #FFD23F 50%, #FFB000 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 18px;
+    letter-spacing: 3px;
+    filter: drop-shadow(0 0 30px rgba(255, 210, 63, 0.5));
+    line-height: 1.1;
+}
+
+.join-subtitle {
+    font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 700px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+}
+
+.join-subtitle strong {
+    color: #FFD23F;
+    font-weight: 800;
+}
+
+/* ==================== ПРЕИМУЩЕСТВА ==================== */
+.join-benefits {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.join-benefit {
+    padding: 22px 14px;
+    background: rgba(255, 210, 63, 0.06);
+    border: 1px solid rgba(255, 210, 63, 0.2);
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.join-benefit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(255, 210, 63, 0.15), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.join-benefit:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 210, 63, 0.5);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 210, 63, 0.3);
+}
+
+.join-benefit:hover::before { opacity: 1; }
+
+.join-benefit-icon {
+    font-size: 1.8rem;
+    filter: drop-shadow(0 0 12px rgba(255, 210, 63, 0.5));
+    position: relative;
+    z-index: 2;
+}
+
+.join-benefit-value {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.5rem;
+    color: #FFD23F;
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(255, 210, 63, 0.6);
+    position: relative;
+    z-index: 2;
+}
+
+.join-benefit-label {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 2;
+}
+
+/* ==================== ЧТО ЖДЁТ ==================== */
+.join-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 45px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.join-feature {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 210, 63, 0.12);
+    border-radius: 14px;
+    transition: all 0.3s;
+}
+
+.join-feature:hover {
+    background: rgba(255, 210, 63, 0.06);
+    border-color: rgba(255, 210, 63, 0.3);
+    transform: translateX(6px);
+}
+
+.join-feature-icon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 10px rgba(255, 210, 63, 0.4));
+}
+
+.join-feature-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.9rem;
+    color: #FFD23F;
+    margin-bottom: 3px;
+}
+
+.join-feature-desc {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.4;
+}
+
+/* ==================== КНОПКИ ==================== */
+.join-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+}
+
+.join-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 42px;
+    border-radius: 50px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 1rem;
+    font-weight: 900;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+}
+
+.join-btn-primary {
+    background: linear-gradient(135deg, #FFD23F, #FFB000);
+    color: #0B1230;
+    box-shadow: 
+        0 10px 30px rgba(255, 210, 63, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    animation: joinBtnPulse 3s ease-in-out infinite;
+}
+
+@keyframes joinBtnPulse {
+    0%, 100% { box-shadow: 0 10px 30px rgba(255, 210, 63, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3); }
+    50% { box-shadow: 0 10px 45px rgba(255, 210, 63, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.3); }
+}
+
+.join-btn-primary:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 
+        0 20px 50px rgba(255, 210, 63, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.join-btn-primary:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.join-btn-secondary {
+    background: transparent;
+    color: #FFD23F;
+    border: 2px solid #FFD23F;
+}
+
+.join-btn-secondary:hover {
+    background: rgba(255, 210, 63, 0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(255, 210, 63, 0.3);
+}
+
+.join-btn-icon {
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.join-btn span:not(.join-btn-icon):not(.btn-shimmer) {
+    position: relative;
+    z-index: 2;
+}
+
+/* Shimmer на primary */
+.join-btn-primary .btn-shimmer {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.6), 
+        transparent);
+    animation: joinBtnShimmer 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes joinBtnShimmer {
+    0% { left: -100%; }
+    60%, 100% { left: 100%; }
+}
+
+/* ==================== ТРЕБОВАНИЯ ==================== */
+.join-requirements {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 210, 63, 0.15);
+    border-bottom: 1px solid rgba(255, 210, 63, 0.15);
+}
+
+.join-req-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 600;
+}
+
+.join-req-check {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6AB04C, #2ECC71);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 900;
+    box-shadow: 0 0 12px rgba(106, 176, 76, 0.5);
+    flex-shrink: 0;
+}
+
+/* ==================== ФИНАЛЬНЫЙ ПРИЗЫВ ==================== */
+.join-cta {
+    padding: 25px;
+    background: rgba(255, 210, 63, 0.04);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 210, 63, 0.15);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.join-cta-quote {
+    font-family: 'Russo One', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #FFD23F;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    font-style: italic;
+    text-shadow: 0 0 20px rgba(255, 210, 63, 0.4);
+}
+
+.join-cta-sign {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 1px;
+}
+
+/* ==================== АДАПТИВ ==================== */
+@media (max-width: 900px) {
+    .join-benefits {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .join-features {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .join-section {
+        padding: 50px 15px;
+    }
+    
+    .join-card {
+        padding: 40px 20px;
+        border-radius: 24px;
+    }
+    
+    .join-crown {
+        font-size: 3.5rem;
+    }
+    
+    .join-title {
+        letter-spacing: 1.5px;
+    }
+    
+    .join-benefit {
+        padding: 16px 10px;
+    }
+    
+    .join-benefit-icon {
+        font-size: 1.5rem;
+    }
+    
+    .join-benefit-value {
+        font-size: 1.2rem;
+    }
+    
+    .join-benefit-label {
+        font-size: 0.62rem;
+    }
+    
+    .join-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 16px 24px;
+    }
+    
+    .join-requirements {
+        gap: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px 20px;
+    }
+    
+    .join-particles {
+        display: none;
+    }
+}
+
+/* ==================== REDUCED MOTION ==================== */
+@media (prefers-reduced-motion: reduce) {
+    .join-crown,
+    .join-glow,
+    .join-particle,
+    .join-btn-primary,
+    .join-btn-primary .btn-shimmer,
+    .join-card::before {
+        animation: none !important;
+    }
+}
